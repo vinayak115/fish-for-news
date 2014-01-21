@@ -12,5 +12,6 @@ files[] = tests/admin_menu.test
 version = "7.x-3.0-rc4"
 core = "7.x"
 project = "admin_menu"
-datestamp = "1359651687"
+datestamp = "1359651687
+sample text
 
