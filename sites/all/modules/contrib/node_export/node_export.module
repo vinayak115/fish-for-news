@@ -490,7 +490,7 @@ function node_export_import($code_string, $msg_t = 't', $save = TRUE) {
 
   // Allow modules to manipulate the $code_string.
   drupal_alter('node_export_decode', $code_string);
-
+  
   // Pass the string to each format handler until one returns something useful.
   $format_handlers = node_export_format_handlers();
   $nodes = array();
@@ -569,11 +569,9 @@ function node_export_import($code_string, $msg_t = 't', $save = TRUE) {
   foreach ($nodes as $original_node) {
     $node = node_export_node_clone($original_node);
 
-    // Import file fields.
-    node_export_file_field_import($node, $original_node);
-
     // Handle existing nodes.
     $nids = entity_get_id_by_uuid('node', array($node->uuid));
+    $nid = (!empty($nids[$node->uuid])?$nids[$node->uuid]:NULL);
     if (!empty($nids[$node->uuid])) {
       $existing = variable_get('node_export_existing', 'new');
       switch ($existing) {
@@ -592,10 +590,14 @@ function node_export_import($code_string, $msg_t = 't', $save = TRUE) {
       }
     }
 
-    // Let other modules do special fixing up.
-    drupal_alter('node_export_node_import', $node, $original_node, $save);
-
     if ($save) {
+
+      // Import file fields.
+      node_export_file_field_import($node, $original_node);
+      
+      // Let other modules do special fixing up.
+      drupal_alter('node_export_node_import', $node, $original_node, $save);
+      
       node_export_save($node);
       $new_nodes[$node->nid] = $node;
       $messages[] = $msg_t("Imported node !nid: !node", array('!nid' => $node->nid, '!node' => l($node->title, 'node/' . $node->nid)));
@@ -612,7 +614,7 @@ function node_export_import($code_string, $msg_t = 't', $save = TRUE) {
 
     // Clear the page and block caches.
     cache_clear_all();
-
+    
     // Nodes were saved, so return the nids.
     return array(
       'success' => TRUE,
@@ -1029,11 +1031,11 @@ function node_export_file_field_export(&$node, $original_node) {
               // convert file to array to stay into the default node_export_file format
               $file = (object) $file;
 
-              // Check the file
-              if (!isset($file->uri) || !is_file($file->uri)) {
-                drupal_set_message(t("File field found on node, but file doesn't exist on disk? '!path'", array('!path' => $file->uri)), 'error');
-                continue;
-              }
+              // Check the file - Comment out this check until I can figure out what is going on
+//               if (!isset($file->uri) || !is_file($file->uri)) {
+//                 drupal_set_message(t("File field found on node, but file doesn't exist on disk? '!path'", array('!path' => $file->uri)), 'error');
+//                 continue;
+//               }
 
               if ($export_mode == 'local') {
                 if ($assets_path) {
@@ -1100,7 +1102,7 @@ function node_export_file_field_import(&$node, $original_node) {
             if ($result == TRUE && isset($file->fid)) {
               $field[$language][$i] = (array)$file;
             }
-
+            
           }
         }
       }

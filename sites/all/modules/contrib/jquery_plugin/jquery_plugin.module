@@ -133,5 +133,11 @@ function jquery_plugin_library() {
       'website' => 'http://plugins.jquery.com/project/html5validator',
       'js' => array($path . 'validator.min.js' => NULL),
     ),
+    'effects.slide' => array(
+      'title' => 'Slide effect',
+      'version' => '1.10.3',
+      'website' => 'https://github.com/jquery/jquery-ui/blob/1.10.3/AUTHORS.txt',
+      'js' => array($path . 'jquery-ui-1.10.3.custom.min.js' => NULL),
+    ),
   );
 }

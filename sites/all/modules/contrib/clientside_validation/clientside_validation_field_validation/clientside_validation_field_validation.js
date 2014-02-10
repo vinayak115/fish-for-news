@@ -32,11 +32,11 @@
                   label.html(
                     label.html()
                       .replace("[value]", $element.val())
-                      .replace("[field-name]", $element.closest(".form-item").find('label').first().text().replace(' *',''))
+                      .replace("[field-name]", $element.closest(".form-item").find('label').text())
                   );
                 }
               }
-            };
+            }
           }
         }
       });
