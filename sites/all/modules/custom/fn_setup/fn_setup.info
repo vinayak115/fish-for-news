@@ -1,7 +1,6 @@
 name = setup module to enable the custom modules required to start with 
 core = 7.x
 package = fish4News
-php = 5.2.4
 dependencies[] = admin_menu
 dependencies[] = admin_menu_source
 dependencies[] = admin_menu_toolbar
