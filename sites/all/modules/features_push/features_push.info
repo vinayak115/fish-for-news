@@ -1,0 +1,9 @@
+name = features_push
+core = 7.x
+package = Features
+dependencies[] = views
+features[ctools][] = views:views_default:3.0
+features[features_api][] = api:1
+features[views_view][] = articles_views
+features_exclude[dependencies][ctools] = ctools
+project path = sites/all/modules
