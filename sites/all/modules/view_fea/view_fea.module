@@ -1,7 +1,0 @@
-<?php
-/**
- * @file
- * Code for the view_fea feature.
- */
-
-include_once 'view_fea.features.inc';
