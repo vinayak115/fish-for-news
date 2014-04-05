@@ -12,15 +12,7 @@ function fn_custom_features_node_info() {
     'articles' => array(
       'name' => t('Articles'),
       'base' => 'node_content',
-      'description' => t('Content type for updating and publishing articles.'),
-      'has_title' => '1',
-      'title_label' => t('Title'),
-      'help' => '',
-    ),
-    'image_gallery' => array(
-      'name' => t('Image Gallery'),
-      'base' => 'node_content',
-      'description' => t('This is used for the image gallery section of an article'),
+      'description' => '',
       'has_title' => '1',
       'title_label' => t('Title'),
       'help' => '',

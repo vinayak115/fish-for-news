@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the fn_content-type feature.
+ */
+
+include_once 'fn_content_type.features.inc';
