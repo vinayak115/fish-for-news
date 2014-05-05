@@ -1,0 +1,158 @@
+body {
+	padding: 0px;
+	margin: 0px;
+	text-align: center;
+	background-image: url(../images/tur_blue/bgvert.jpg);
+	background-repeat: repeat-x;
+	background-color: #cdfaff;
+	font-size: 12px;
+	font-family: Arial, Helvetica, sans-serif;
+	color:#4f4f4f;
+}
+#outdiv {
+	width: 980px;
+	margin:0px auto;
+	text-align: center;
+	background-image: url(../images/tur_blue/header.jpg);
+	background-repeat: no-repeat;
+	background-position: center top;
+}
+#header {
+	height: 174px;
+}
+#container {
+	margin-left: 88px;
+	width: 778px;
+	background-color: white;
+	padding: 6px;
+}
+#banner {
+	text-align: left;
+}
+
+#content {
+	text-align: left;
+	background-color: white;
+	margin: 0px 20px 0px 20px;
+}
+#footer {
+  margin: 8px 0 60px 88px;
+  width:790px;
+	height: 42px;
+	background-color: white;
+	background-image: url(../images/logo.jpg);
+	background-repeat: no-repeat;
+}
+#footer p
+{
+  margin:0px;
+  padding:12px;
+}
+#menu {
+	height: 39px;
+	margin: 8px 0 0 0;
+	background-image: url(../images/menubg.jpg);
+	background-repeat: repeat-x;
+}
+#menu ul {
+	padding: 0px;
+	margin: 0 0 0 20px;
+}
+#menu ul li
+{
+  height: 29px;
+	text-align: center;
+	padding: 10px 0 0 0;
+	font-weight: bold;
+	list-style: none;
+	float: left;
+	width: 100px;
+}
+#menu ul li a
+{
+  text-decoration: none;
+  color: rgb(5,93,133);
+}
+.selected
+{
+  background-image: url(../images/tur_blue/selmenubg.jpg);
+	background-repeat: no-repeat;
+	color: white;
+}
+.menuitem {
+	background-image: url(../images/menu_sep.jpg);
+	background-repeat: no-repeat;
+	background-position: top left;
+}
+.menuitemn {	
+}
+#submenu {
+	background-color: #B7B5B6;
+	height: 24px;
+	margin: 0;
+}
+#submenu ul
+{
+  padding:0;
+  margin:0;
+}
+#submenu ul li
+{
+  float:left;
+  list-style: none;
+  padding: 3px 8px 0 8px;
+  
+}
+#submenu ul li.submenuitem
+{
+  background-image: url(../images/submenu_sep.jpg);
+	background-repeat: no-repeat;
+	background-position: top left; 
+}
+#submenu ul li.left
+{
+
+}
+#submenu ul li a
+{
+  text-decoration: none;
+  color:white;
+}
+#submenu ul li.selected
+{
+ font-weight: bold;
+  background-image: url(../images/submenu_sep.jpg);
+	background-repeat: no-repeat;
+	background-position: top left; 
+}
+#submenu ul li.selectedleft {
+	font-weight: bold;
+}
+#submenu ul li.selected a
+{
+  border-bottom: 1px white dotted;
+}
+#submenu ul li.selectedleft a {
+	border-bottom: 1px white dotted;
+}
+.articleTitle{
+	font-size:18px; 
+	color:#d42f36; 
+	font-weight:bold; 
+	font-family:Arial;
+}
+.signature{
+	padding:7px 0px 7px 0px;
+}
+#footer {
+    margin: 8px 0 60px 88px;
+    width: 790px;
+    height: 42px;
+    background-color: white;
+    background-image: url(../images/logo.jpg);
+    background-repeat: no-repeat;
+}
+#footer p {
+    margin: 0px;
+    padding: 12px;
+}

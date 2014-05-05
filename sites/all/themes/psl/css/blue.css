@@ -1,0 +1,136 @@
+body {
+	padding: 0px;
+	margin: 0px;
+	text-align: center;
+	background-image: url('../images/bgvert.jpg');
+	background-repeat: repeat-x;
+	background-color: rgb(240,246,246);
+	font-size: 12px;
+	font-family: Arial, Helvetica, sans-serif;
+	color:#4f4f4f
+}
+#outdiv {
+	width: 980px;
+	margin:0px auto;
+	text-align: center;
+	background-image: url('../images/header2.jpg');
+	background-repeat: no-repeat;
+	background-position: center top
+}
+#header {
+	height: 174px;
+}
+#container {
+	margin-left: 88px;
+	width: 778px;
+	background-color: white;
+	padding: 6px;
+}
+#banner {
+	text-align: left;
+}
+
+#content {
+	text-align: left;
+	background-color: white;
+	line-height:1.6;
+	margin-left:5px;
+}
+#footer {
+  width:790px;
+	height: 42px;
+	background-color: white;
+	background-image: url('../images/logo.jpg');
+	background-repeat: no-repeat; margin-left:88px; margin-right:0; margin-top:8px; margin-bottom:60px
+}
+#footer p
+{
+  margin:0px;
+  padding:12px;
+}
+#menu {
+	height: 39px;
+	background-image: url('../images/menubg.jpg');
+	background-repeat: repeat-x; margin-left:0; margin-right:0; margin-top:8px; margin-bottom:0
+}
+#menu ul {
+	padding: 0px;
+	margin: 0 0 0 20px;
+}
+#menu ul li
+{
+  height: 29px;
+	text-align: center;
+	padding: 10px 0 0 0;
+	font-weight: bold;
+	list-style: none;
+	float: left;
+	width: 100px;
+}
+#menu ul li a
+{
+  text-decoration: none;
+  color: #055D85;
+}
+#menu ul li.selected
+{
+  background-image: url('../images/selmenubg.jpg');
+	background-repeat: no-repeat;
+	color: white
+}
+#menu ul li.menuitem {
+	background-image: url('../images/menu_sep.jpg');
+	background-repeat: no-repeat;
+	background-position:  left top;
+}
+#menu ul li.menuitemn {	
+}
+#submenu {
+	background-color: #B7B5B6;
+	height: 24px;
+	margin: 0;
+}
+#submenu ul
+{
+  padding:0;
+  margin:0;
+}
+#submenu ul li
+{
+  float:left;
+  list-style: none;
+  padding: 3px 8px 0 8px;
+  
+}
+#submenu ul li.submenuitem
+{
+  background-image: url('../images/submenu_sep.jpg');
+	background-repeat: no-repeat;
+	background-position:  left top; 
+}
+#submenu ul li.left
+{
+
+}
+#submenu ul li a
+{
+  text-decoration: none;
+  color:white;
+}
+#submenu ul li.selected
+{
+ font-weight: bold;
+  background-image: url('../images/submenu_sep.jpg');
+	background-repeat: no-repeat;
+	background-position:  left top; 
+}
+#submenu ul li.selectedleft {
+	font-weight: bold;
+}
+#submenu ul li.selected a
+{
+  border-bottom: 1px white dotted;
+}
+#submenu ul li.selectedleft a {
+	border-bottom: 1px white dotted;
+}

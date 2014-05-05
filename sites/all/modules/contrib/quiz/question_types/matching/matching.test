@@ -1,0 +1,95 @@
+<?php
+
+/**
+ * @file
+ * Unit tests for the matching Module.
+ */
+
+/**
+ * Test class for matching questions.
+ */
+class MatchingUnitTest extends QuizQuestionTestCase {
+
+  // initializing attributes
+  var $question_node_type = 'matching';
+  var $title = '';
+  var $body = '';
+
+  // member functions definition starts here
+
+  /**
+   * The getInfo() method provides information about the test.
+   * In order for the test to be run, the getInfo() method needs
+   * to be implemented.
+   */
+  public static function getInfo() {
+    return array(
+      'name' => t('Matching Questions unit test'),
+      'description' => t('Unit test for matching question type.'),
+      'group' => t('Quiz'),
+    );
+  }
+
+  /**
+   * Implementing setUp() to enable truefalse module testing
+   */
+  function setUp() {
+    parent::setUp('taxonomy', 'quiz', 'views', 'quiz_question', 'matching');
+
+    // Create and log in our test user. Should be cleaned up as I something
+    // was wrong with permissions and I basically kept adding potentially
+    // useful ones until it worked.
+    // array of drupal permission
+    $permission = array(
+      'access administration pages',
+      'access quiz',
+      'administer blocks',
+      'administer quiz configuration',
+      'administer site configuration',
+      'administer taxonomy',
+      'create matching content',
+      'create quiz content',
+      'edit any matching content',
+    );
+
+    // create a drupal test user with specified permissions
+    $user = $this->drupalCreateUser($permission);
+    $this->drupalLogin($user);
+  }
+
+  /**
+   * function to create true false type question node for testing.
+   */
+  public function testCreateQuizQuestion() {
+    // matching question node attributes
+    $this->title = $this->randomName();
+    $this->body = $this->randomName();
+
+    // array of node attributes to create a test node
+    $settings = array(
+      'type' => $this->question_node_type,
+      'title' => $this->title,
+      'body' => array(LANGUAGE_NONE => array(array('value' => $this->body))),
+      'revisions' => TRUE,
+      'choice_penalty' => 0,
+    );
+
+    $this->match = array();
+    $form_size = variable_get('quiz_matching_form_size', 5);
+    // generate rand match question, answer and feedback
+    for ($i = 1; $i < $form_size; $i++) {
+      $settings['match'][$i]['question'] = $this->match[$i]['question'] = $this->randomName();
+      $setting['match'][$i]['answer'] = $this->match[$i]['answer'] = $this->randomName();
+      $settings['match'][$i]['feedback'] = $this->match[$i]['feedback'] = $this->randomName();
+    }
+
+    // create drupal node
+    $node = $this->drupalCreateNode($settings);
+    $load = node_load($node->nid);
+
+    // @todo verify save
+
+    return $load;
+  }
+
+}

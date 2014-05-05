@@ -1,0 +1,131 @@
+<?php
+
+/**
+ * @file
+ * Test suite for choice Questions type module.
+ */
+
+/**
+ * Test class for multichoice questions.
+ */
+class ChoiceTestCase extends QuizQuestionTestCase {
+
+  /**
+   * The getInfo() method provides information about the test.
+   * In order for the test to be run, the getInfo() method needs
+   * to be implemented.
+   */
+  public static function getInfo() {
+    return array(
+      'name' => t('Choice unit test'),
+      'description' => t('Unit test for true or false question type.'),
+      'group' => t('Quiz'),
+    );
+  }
+
+  /**
+   * Implementing setUp() to enable truefalse module testing
+   */
+  function setUp() {
+    parent::setUp('taxonomy', 'quiz', 'views', 'quiz_question', 'multichoice');
+
+    // Create and log in our test user. Should be cleaned up as I something
+    // was wrong with permissions and I basically kept adding potentially
+    // useful ones until it worked.
+    // array of drupal permission
+    $permission = array(
+      'access administration pages',
+      'access quiz',
+      'administer blocks',
+      'administer quiz configuration',
+      'administer site configuration',
+      'administer taxonomy',
+      'create multichoice content',
+      'create quiz content',
+      'edit any multichoice content',
+    );
+
+    // create a drupal test user with specified permissions
+    $user = $this->drupalCreateUser($permission);
+    $this->drupalLogin($user);
+  }
+
+  /**
+   * Create a default MCQ with default settings.
+   */
+  public function testCreateQuizQuestion() {
+    $settings = array();
+    $settings['type'] = 'multichoice';
+
+    $settings['alternatives'][0]['answer']['value'] = 'A';
+    $settings['alternatives'][0]['answer']['format'] = 'filtered_html';
+    $settings['alternatives'][0]['feedback_if_chosen']['value'] = 'You chose A';
+    $settings['alternatives'][0]['feedback_if_chosen']['format'] = 'filtered_html';
+    $settings['alternatives'][0]['feedback_if_not_chosen']['value'] = 'You did not choose A';
+    $settings['alternatives'][0]['feedback_if_not_chosen']['format'] = 'filtered_html';
+    $settings['alternatives'][0]['score_if_chosen'] = 1;
+    $settings['alternatives'][0]['score_if_not_chosen'] = 0;
+
+    $settings['alternatives'][1]['answer']['value'] = 'B';
+    $settings['alternatives'][1]['answer']['format'] = 'filtered_html';
+    $settings['alternatives'][1]['feedback_if_chosen']['value'] = 'You chose B';
+    $settings['alternatives'][1]['feedback_if_chosen']['format'] = 'filtered_html';
+    $settings['alternatives'][1]['feedback_if_not_chosen']['value'] = 'You did not choose B';
+    $settings['alternatives'][1]['feedback_if_not_chosen']['format'] = 'filtered_html';
+    $settings['alternatives'][1]['score_if_chosen'] = 0;
+    $settings['alternatives'][1]['score_if_not_chosen'] = 0;
+
+    $settings['alternatives'][2]['answer']['value'] = 'C';
+    $settings['alternatives'][2]['answer']['format'] = 'filtered_html';
+    $settings['alternatives'][2]['feedback_if_chosen']['value'] = 'You chose C';
+    $settings['alternatives'][2]['feedback_if_chosen']['format'] = 'filtered_html';
+    $settings['alternatives'][2]['feedback_if_not_chosen']['value'] = 'You did not choose C';
+    $settings['alternatives'][2]['feedback_if_not_chosen']['format'] = 'filtered_html';
+    $settings['alternatives'][2]['score_if_chosen'] = 0;
+    $settings['alternatives'][2]['score_if_not_chosen'] = 0;
+
+    $settings['choice_multi'] = 0;
+    $settings['choice_random'] = 0;
+    $settings['choice_boolean'] = 0;
+    $node = $this->drupalCreateNode($settings);
+    $load = node_load($node->nid);
+
+    $this->assertNotNull($load->alternatives[0]['id'], 'Alternative 0 was created as part of question save.');
+    $this->assertNotNull($load->alternatives[1]['id'], 'Alternative 1 was created as part of question save.');
+    $this->assertEqual($load->alternatives[0]['answer']['value'], 'A', 'Alternative text 0 was saved and loaded correctly.');
+    $this->assertEqual($load->alternatives[1]['answer']['value'], 'B', 'Alternative text 0 was saved and loaded correctly.');
+    $this->assertEqual($load->alternatives[0]['answer']['format'], 'filtered_html', 'Alternative format 1 was saved and loaded correctly.');
+    $this->assertEqual($load->alternatives[1]['answer']['format'], 'filtered_html', 'Alternative format 1 was saved and loaded correctly.');
+
+    return $load;
+  }
+
+  /**
+   * Test multiple answers.
+   */
+  function testMultipleAnswers() {
+    // @todo
+  }
+
+  /**
+   * Test random order of choices.
+   */
+  function testRandomOrder() {
+    // @todo
+  }
+
+  /**
+   * Test scoring.
+   */
+  function testScoring() {
+    // @todo
+  }
+
+  /**
+   * Test simple scoring.
+   */
+  function testSimpleScoring() {
+    // @todo
+  }
+
+}

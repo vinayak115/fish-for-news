@@ -1,0 +1,107 @@
+<?php
+
+/**
+ * @file
+ * Unit tests for the short_answer Module.
+ */
+
+/**
+ * Test class for short answer.
+ */
+class ShortAnswerUnitTest extends QuizQuestionTestCase {
+
+  // initialing attributes
+  var $question_node_type = 'short_answer';
+  var $title = '';
+  var $body = '';
+
+  // member functions definition starts here
+
+  /**
+   * The getInfo() method provides information about the test.
+   * In order for the test to be run, the getInfo() method needs
+   * to be implemented.
+   */
+  public static function getInfo() {
+    return array(
+      'name' => t('Short Answer unit test'),
+      'description' => t('Unit test for Short answers question type.'),
+      'group' => t('Quiz'),
+    );
+  }
+
+  /**
+   * Implementing setUp() to enable short_answer module testing
+   */
+  function setUp() {
+    parent::setUp('taxonomy', 'quiz', 'views', 'quiz_question', 'short_answer');
+
+    // array of drupal user permission
+    $permission = array(
+      'access administration pages',
+      'access quiz',
+      'administer blocks',
+      'administer quiz configuration',
+      'administer site configuration',
+      'administer taxonomy',
+      'create short_answer content',
+      'create quiz content',
+      'edit any short_answer content',
+    );
+
+    // Create and log in our test user. Should be cleaned up as I something
+    // was wrong with permissions and I basically kept adding potentially
+    // useful ones until it worked.
+    $user = $this->drupalCreateUser($permission);
+    $this->drupalLogin($user);
+  }
+
+  /**
+   * function to create true false type question node for testing.
+   */
+  public function testCreateQuizQuestion() {
+    // score range
+    $score_min = 1;
+    $score_max = 16;
+
+    // evaluation type
+    $evaluation = array(
+      0 => 'exact_match',
+      1 => 'case_insensitive_match',
+      2 => 'regular_expression',
+      3 => 'manual_score',
+    );
+
+    // short answer question node attributes
+    $this->title = $this->randomName();
+    $this->body = $this->randomName();
+    $this->correct_answer = $this->randomName();
+    $this->maximum_score = rand($score_min, $score_max);
+    $this->correct_answer_evaluation = array_rand($evaluation);
+
+    // array of node attributes to create a test node
+    $settings = array(
+      'type' => $this->question_node_type,
+      'title' => $this->title,
+      'body' => array(LANGUAGE_NONE => array(array('value' => $this->body))),
+      'correct_answer' => $this->correct_answer,
+      'maximum_score' => $this->maximum_score,
+      'correct_answer_evaluation' => $this->correct_answer_evaluation,
+      'revisions' => TRUE,
+    );
+
+    $node = $this->drupalCreateNode($settings);
+
+    $load = node_load($node->nid);
+
+    $this->assertEqual($load->title, $this->title, t('Title of stored node should equal the original title.'));
+    $this->assertEqual($load->body, $this->body, t('Body of stored node should be equal to original body.'));
+    $this->assertEqual($load->type, $this->question_node_type, t('Stored node type should be long_answer'));
+    $this->assertEqual($load->correct_answer, $this->correct_answer, t('Correct answer of stored node should be equal the original correct answer'));
+    $this->assertEqual($load->maximum_score, $this->maximum_score, t('Maximum Score of stored node should be equal the original maximum score'));
+    $this->assertEqual($load->correct_answer_evaluation, $this->correct_answer_evaluation, t('Correct answer evaluation method should be equal the correct answer'));
+
+    return $load;
+  }
+
+}

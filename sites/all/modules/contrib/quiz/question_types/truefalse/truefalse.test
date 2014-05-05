@@ -1,0 +1,86 @@
+<?php
+
+/**
+ * @file
+ * Unit tests for the truefalse Module.
+ */
+
+/**
+ * Test class for true false questions.
+ */
+class TrueFalseUnitTest extends QuizQuestionTestCase {
+
+  // initialing attributes
+  var $question_node_type = 'true_false';
+  var $title = '';
+  var $body = '';
+
+  // member functions definition starts here
+
+  /**
+   * The getInfo() method provides information about the test.
+   * In order for the test to be run, the getInfo() method needs
+   * to be implemented.
+   */
+  public static function getInfo() {
+    return array(
+      'name' => t('TrueFalse unit test'),
+      'description' => t('Unit test for true or false question type.'),
+      'group' => t('Quiz'),
+    );
+  }
+
+  /**
+   * Implementing setUp() to enable truefalse module testing
+   */
+  function setUp() {
+    parent::setUp('taxonomy', 'quiz', 'views', 'quiz_question', 'truefalse');
+
+    // array of drupal user permission
+    $permission = array(
+      'access administration pages',
+      'access quiz',
+      'administer blocks',
+      'administer quiz configuration',
+      'administer site configuration',
+      'administer taxonomy',
+      'create truefalse content',
+      'create quiz content',
+      'edit any truefalse content',
+    );
+
+    // Create and log in our test user. Should be cleaned up as I something
+    // was wrong with permissions and I basically kept adding potentially
+    // useful ones until it worked.
+    $user = $this->drupalCreateUser($permission);
+
+    // login into drupal site
+    $this->drupalLogin($user);
+  }
+
+  /**
+   * Create true false type question node for testing.
+   */
+  public function testCreateQuizQuestion() {
+    $this->title = $this->randomName();
+    $this->body = $this->randomName();
+    $this->correct_answer = array_rand(array(0, 1));
+    // array containing drupal node attributes
+    $settings = array(
+      'type' => $this->question_node_type,
+      'title' => $this->title,
+      'body' => array(LANGUAGE_NONE => array(array('value' => $this->body))),
+      'correct_answer' => $this->correct_answer,
+      'revisions' => TRUE,
+    );
+    // create a test drupal node
+    $node = $this->drupalCreateNode($settings);
+
+    $load = node_load($node->nid);
+
+    $this->assertEqual($load->correct_answer, $this->correct_answer, t('Check that stored score is the same as newly assigned score.'));
+
+    return $load;
+  }
+
+}

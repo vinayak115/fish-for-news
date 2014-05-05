@@ -10,6 +10,7 @@ stylesheets[all][] = system.menus.css
 regions[header]         = Header
 regions[navigation]     = Navigation bar
 regions[highlighted]    = Highlighted
+regions[highlightedx]    = Highlighted Region
 regions[help]           = Help
 regions[content]        = Content
 regions[sidebar_first]  = First sidebar

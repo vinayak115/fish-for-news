@@ -1,0 +1,14 @@
+name = Quiz pages
+package = Quiz
+description = Provides support for pages of questions.
+core = 7.x
+dependencies[] = quiz
+dependencies[] = quiz_question
+files[] = quiz_page.classes.inc
+
+; Information added by Drupal.org packaging script on 2014-05-01
+version = "7.x-5.x-dev"
+core = "7.x"
+project = "quiz"
+datestamp = "1398981829"
+

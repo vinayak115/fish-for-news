@@ -1,0 +1,29 @@
+name        = Persistent Newsletter
+description = This theme is used for the Persistent Newsletter
+screenshot  = screenshot.png
+
+core        = 7.x
+engine      = phptemplate
+
+stylesheets[all][] = system.menus.css
+
+regions[header]         = Header
+regions[navigation]     = Navigation bar
+regions[highlighted]    = Highlighted
+regions[highlightedx]    = Highlighted Region
+regions[help]           = Help
+regions[content]        = Content
+regions[sidebar_first]  = First sidebar
+regions[sidebar_second] = Second sidebar
+regions[footer]         = Footer
+regions[bottom]         = Page bottom
+regions[page_top]       = Page top
+regions[page_bottom]    = Page bottom
+
+
+; Information added by drupal.org packaging script on 2013-08-21
+version = "7.x-5.4"
+core = "7.x"
+project = "zen"
+datestamp = "1377107504"
+
