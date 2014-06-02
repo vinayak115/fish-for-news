@@ -16,15 +16,16 @@
  * @file
  * Question type, enabling rapid creation of simple surveys using the quiz framework.
  */
+
 // @todo: We mix the names answer_collection and alternatives. Use either alternative or answer consistently
 
 /**
  * Extension of QuizQuestion.
  */
 class ScaleQuestion extends QuizQuestion {
-
   // $util will be set to true if an instance of this class is used only as a utility
   protected $util = FALSE;
+
   // (answer)Collection id
   protected $col_id = NULL;
 
@@ -248,7 +249,7 @@ class ScaleQuestion extends QuizQuestion {
       $res_o2 = db_query('SELECT * FROM {quiz_scale_answer}
               WHERE answer_collection_id = :answer_collection_id
               AND id = :id', array(':answer_collection_id' => $answer_collection_id, ':id' => ($last_id + 2)))->fetch();
-      return ($res_o2) ? FALSE : $answer_collection_id;
+      return ($res_o2) ? $answer_collection_id : FALSE;
     }
 
     // Do a recursive call to this function on all answer collection candidates
@@ -266,9 +267,7 @@ class ScaleQuestion extends QuizQuestion {
    *
    * @see QuizQuestion#validate()
    */
-  public function validateNode(array &$form) {
-
-  }
+  public function validateNode(array &$form) { }
 
   /**
    * Implementation of delete
@@ -346,10 +345,10 @@ class ScaleQuestion extends QuizQuestion {
   /**
    * Implementation of getAnsweringForm
    *
-   * @see getAnsweringForm($form_state, $result_id)
+   * @see getAnsweringForm($form_state, $rid)
    */
-  public function getAnsweringForm(array $form_state = NULL, $result_id) {
-    $form = parent::getAnsweringForm($form_state, $result_id);
+  public function getAnsweringForm(array $form_state = NULL, $rid) {
+    $form = parent::getAnsweringForm($form_state, $rid);
     //$form['#theme'] = 'scale_answering_form';
     $options = array();
     for ($i = 0; $i < variable_get('scale_max_num_of_alts', 10); $i++) {
@@ -358,25 +357,16 @@ class ScaleQuestion extends QuizQuestion {
       }
     }
 
-    $form = array(
+    $form['tries'] = array(
       '#type' => 'radios',
       '#title' => t('Choose one'),
       '#options' => $options,
     );
-    if (isset($result_id)) {
-      $response = new ScaleResponse($result_id, $this->node);
-      $form['#default_value'] = $response->getResponse();
+    if (isset($rid)) {
+      $response = new ScaleResponse($rid, $this->node);
+      $form['tries']['#default_value'] = $response->getResponse();
     }
     return $form;
-  }
-
-  /**
-   * Question response validator.
-   */
-  public function getAnsweringFormValidate(array &$form, array &$form_state = NULL) {
-    if ($form_state['values']['question'][$this->node->nid] == '') {
-      form_set_error('', t('You must provide an answer'));
-    }
   }
 
   /**
@@ -392,6 +382,7 @@ class ScaleQuestion extends QuizQuestion {
     $collections = $this->getPresetCollections(TRUE);
     $options = $this->makeOptions($collections);
     $options['d'] = '-'; // Default
+
     // We need to add the available preset collections as javascript so that the alternatives can be populated instantly
     // when a
     $jsArray = $this->makeJSArray($collections);
@@ -478,7 +469,7 @@ class ScaleQuestion extends QuizQuestion {
          */
         if (isset($col_id)) {
           $num_scale_elements = count($collections[$col_id]->alternatives);
-          $collections[$col_id]->name = check_plain($collections[$col_id]->alternatives[0] . ' - ' . $collections[$col_id]->alternatives[$num_scale_elements - 1] . ' (' . $num_scale_elements . ')');
+          $collections[$col_id]->name = check_plain($collections[$col_id]->alternatives[0] . ' - ' . $collections[$col_id]->alternatives[$num_scale_elements -1] . ' (' . $num_scale_elements . ')');
         }
         // Break the loop if there are no more answer collections to process
         if (!$res_o) {
@@ -545,14 +536,12 @@ class ScaleQuestion extends QuizQuestion {
     // This is why 1 is returned and not zero.
     return 1;
   }
-
 }
 
 /**
  * Extension of QuizQuestionResponse
  */
 class ScaleResponse extends QuizQuestionResponse {
-
   /**
    * ID of the answer.
    */
@@ -574,6 +563,14 @@ class ScaleResponse extends QuizQuestionResponse {
     $this->answer = check_plain($answer);
   }
 
+
+  public function isValid() {
+    if (empty($this->answer_id)) {
+      return t('You must provide an answer');
+    }
+    return TRUE;
+  }
+
   /**
    * Implementation of save
    *
@@ -583,7 +580,7 @@ class ScaleResponse extends QuizQuestionResponse {
     $id = db_insert('quiz_scale_user_answers')
       ->fields(array(
         'answer_id' => $this->answer_id,
-        'result_id' => $this->result_id,
+        'result_id' => $this->rid,
         'question_vid' => $this->question->vid,
         'question_nid' => $this->question->nid,
       ))
@@ -597,11 +594,12 @@ class ScaleResponse extends QuizQuestionResponse {
    */
   public function delete() {
     db_delete('quiz_scale_user_answers')
-      ->condition('result_id', $this->result_id)
+      ->condition('result_id', $this->rid)
       ->condition('question_nid', $this->question->nid)
       ->condition('question_vid', $this->question->vid)
       ->execute();
   }
+
 
   /**
    * Implementation of score
@@ -632,5 +630,4 @@ class ScaleResponse extends QuizQuestionResponse {
     $form['answer'] = array('#markup' => check_plain($this->answer));
     return $form;
   }
-
 }

@@ -22,12 +22,12 @@ function long_answer_view_unscored() {
  *
  * @param $vid
  *  The VID of the question and answer to load.
- * @param $result_id
+ * @param $rid
  *  The result ID of the answer to load.
  * @return
  *  Text to display.
  */
-function long_answer_edit_score($vid, $result_id) {
+function long_answer_edit_score($vid, $rid) {
 
   // We have to do the vid -> nid lookup ourselves because node_load uses only node.vid,
   // and we need to be able to access old nodes in node_revision.vid.
@@ -43,7 +43,7 @@ function long_answer_edit_score($vid, $result_id) {
     return;
   }
 
-  $answer = (object) long_answer_get_answer($node->nid, $node->vid, $result_id);
+  $answer = (object) long_answer_get_answer($node->nid, $node->vid, $rid);
   if (!$answer) {
     drupal_not_found();
     return;
@@ -109,10 +109,9 @@ function long_answer_score_form($form, $form_state, $node, $answer) {
   );
   $form['score_answer']['answer_feedback'] = array(
     '#title' => t('Feedback'),
-    '#type' => 'text_format',
+    '#type' => 'textarea',
     '#description' => t('The text entered here would be shown to attendees'),
     '#default_value' => $answer->answer_feedback,
-    '#format' => isset($answer->answer_feedback_format) ? $answer->answer_feedback_format : NULL
   );
 
   $form['score_answer']['submit'] = array(
@@ -168,7 +167,7 @@ function long_answer_score_form_submit($form, &$form_state) {
     'quiz' => node_load($result->nid, $result->vid),
     'nid' => $form_state['values']['question_nid'],
     'vid' => $form_state['values']['question_vid'],
-    'result_id' => $form_state['values']['result_id'],
+    'rid' => $form_state['values']['result_id'],
     'score' => $form_state['values']['score'],
     'max_score' => $form_state['values']['rel_max_score'],
     'answer_feedback' => $form_state['values']['answer_feedback']

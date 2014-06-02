@@ -21,6 +21,15 @@
 class QuizDirectionsQuestion extends QuizQuestion {
 
   /**
+   * Constructor
+   */
+  public function __construct(stdClass $node) {
+    parent::__construct($node);
+    $this->node->no_skip_button = TRUE; // No skip button
+    $this->node->not_a_question = TRUE;
+  }
+
+  /**
    * Implementation of validateNode
    *
    * @see QuizQuestion#validateNode($form)
@@ -37,10 +46,10 @@ class QuizDirectionsQuestion extends QuizQuestion {
   /**
    * Implementation of getAnsweringForm
    *
-   * @see QuizQuestion#getAnsweringForm($form_state, $result_id)
+   * @see QuizQuestion#getAnsweringForm($form_state, $rid)
    */
-  public function getAnsweringForm(array $form_state = NULL, $result_id) {
-    $form = parent::getAnsweringForm($form_state, $result_id);
+  public function getAnsweringForm(array $form_state = NULL, $rid) {
+    $form = parent::getAnsweringForm($form_state, $rid);
 
     $form['tries'] = array(
       '#type' => 'hidden',
@@ -79,10 +88,6 @@ class QuizDirectionsQuestion extends QuizQuestion {
   public function getMaximumScore() {
     return 0;
   }
-
-  public function isGraded() {
-    return FALSE;
-  }
 }
 
 /**
@@ -118,12 +123,12 @@ class QuizDirectionsResponse extends QuizQuestionResponse {
       // reset the timer.
       $sql = 'UPDATE {quiz_node_results} SET time_start=%d WHERE result_id = %d';
       // TODO Please review the conversion of this statement to the D7 database API syntax.
-      /* db_query($sql, REQUEST_TIME, $this->result_id) */
+      /* db_query($sql, REQUEST_TIME, $this->rid) */
       db_update('quiz_node_results')
   ->fields(array(
     'time_start' => REQUEST_TIME,
   ))
-  ->condition('result_id', $this->result_id)
+  ->condition('result_id', $this->rid)
   ->execute();
     }
 

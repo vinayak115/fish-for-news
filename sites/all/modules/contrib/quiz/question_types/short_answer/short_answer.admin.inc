@@ -22,12 +22,12 @@ function short_answer_view_unscored() {
  *
  * @param $vid
  *  The VID of the question and answer to load.
- * @param $result_id
+ * @param $rid
  *  The result ID of the answer to load.
  * @return
  *  Text to display.
  */
-function short_answer_edit_score($vid, $result_id) {
+function short_answer_edit_score($vid, $rid) {
   $nid = db_query('SELECT nid FROM {node_revision} WHERE vid = :vid', array(':vid' => $vid))->fetchField();
   if (!$nid) {
     drupal_not_found();
@@ -40,7 +40,7 @@ function short_answer_edit_score($vid, $result_id) {
     return;
   }
 
-  $answer = (object) short_answer_get_answer($node->nid, $node->vid, $result_id);
+  $answer = (object) short_answer_get_answer($node->nid, $node->vid, $rid);
   if (!$answer) {
     drupal_not_found();
     return;
@@ -101,10 +101,9 @@ function short_answer_score_form($form, $context, $node, $answer) {
   );
   $form['answer_feedback'] = array(
     '#title' => t('Feedback'),
-    '#type' => 'text_format',
+    '#type' => 'textarea',
     '#description' => t('The text entered here would be shown to attendees'),
     '#default_value' => $answer->answer_feedback,
-    '#format' => isset($answer->answer_feedback_format) ? $answer->answer_feedback_format : NULL 
   );
   $form['submit'] = array(
     '#type' => 'submit',
@@ -159,7 +158,7 @@ function short_answer_score_form_submit($form, &$form_state) {
     'quiz' => node_load($result->nid, $result->vid),
     'nid' => $form_state['values']['question_nid'],
     'vid' => $form_state['values']['question_vid'],
-    'result_id' => $form_state['values']['result_id'],
+    'rid' => $form_state['values']['result_id'],
     'score' => $form_state['values']['score'],
     'max_score' => $form_state['values']['rel_max_score'],
     'answer_feedback' => $form_state['values']['answer_feedback']

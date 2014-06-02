@@ -1,5 +1,6 @@
 <?php
 
+
 /**
  * Defines the classes necessary for a True/False quiz.
  *
@@ -108,8 +109,8 @@ class TrueFalseQuestion extends QuizQuestion {
     }
     else {
       $content['answers'] = array(
-        '#markup' => '<div class="quiz-answer-hidden">' . t('Answer hidden') . '</div>',
-        '#weight' => 2,
+      '#markup' => '<div class="quiz-answer-hidden">' . t('Answer hidden') . '</div>',
+      '#weight' => 2,
       );
     }
     return $content;
@@ -118,13 +119,14 @@ class TrueFalseQuestion extends QuizQuestion {
   /**
    * Implementation of getAnsweringForm
    *
-   * @see QuizQuestion#getAnsweringForm($form_state, $result_id)
+   * @see QuizQuestion#getAnsweringForm($form_state, $rid)
    */
-  public function getAnsweringForm(array $form_state = NULL, $result_id) {
-    $element = parent::getAnsweringForm($form_state, $result_id);
+  public function getAnsweringForm(array $form_state = NULL, $rid) {
+    $form = parent::getAnsweringForm($form_state, $rid);
     //$form['#theme'] = 'truefalse_answering_form';
+
     // 'tries' is unfortunately required by quiz.module
-    $element += array(
+    $form['tries'] = array(
       '#type' => 'radios',
       '#title' => t('Choose one'),
       '#options' => array(
@@ -134,21 +136,12 @@ class TrueFalseQuestion extends QuizQuestion {
       '#default_value' => NULL, // prevent default value set to NULL
     );
 
-    if (isset($result_id)) {
-      $response = new TrueFalseResponse($result_id, $this->node);
+    if (isset($rid)) {
+      $response = new TrueFalseResponse($rid, $this->node);
       $default = $response->getResponse();
-      $element['#default_value'] = is_null($default) ? NULL : $default;
+      $form['tries']['#default_value'] = is_null($default) ? NULL : $default;
     }
-    return $element;
-  }
-
-  /**
-   * Question response validator.
-   */
-  public function getAnsweringFormValidate(array &$form, array &$form_state = NULL) {
-    if (is_null($form_state['values']['question'][$this->node->nid])) {
-      form_set_error('', t('You must provide an answer'));
-    }
+    return $form;
   }
 
   /**
@@ -207,6 +200,7 @@ class TrueFalseQuestion extends QuizQuestion {
     return 1;
   }
 
+
   /**
    * Get the answer to this question.
    *
@@ -215,7 +209,6 @@ class TrueFalseQuestion extends QuizQuestion {
   public function getCorrectAnswer() {
     return db_query('SELECT correct_answer FROM {quiz_truefalse_node} WHERE nid = :nid AND vid = :vid', array(':nid' => $this->node->nid, ':vid' => $this->node->vid))->fetchField();
   }
-
 }
 
 /**
@@ -241,6 +234,15 @@ class TrueFalseResponse extends QuizQuestionResponse {
   }
 
   /**
+   * Implementation of isValid
+   *
+   * @see QuizQuestionResponse#isValid()
+   */
+  public function isValid() {
+    return ($this->answer === NULL) ? t('You must provide an answer') : TRUE;
+  }
+
+  /**
    * Implementation of save
    *
    * @see QuizQuestionResponse#save()
@@ -250,7 +252,7 @@ class TrueFalseResponse extends QuizQuestionResponse {
       ->fields(array(
         'question_nid' => $this->question->nid,
         'question_vid' => $this->question->vid,
-        'result_id' => $this->result_id,
+        'result_id' => $this->rid,
         'answer' => (int) $this->answer,
         'score' => (int) $this->getScore(),
       ))
@@ -266,7 +268,7 @@ class TrueFalseResponse extends QuizQuestionResponse {
     db_delete('quiz_truefalse_user_answers')
       ->condition('question_nid', $this->question->nid)
       ->condition('question_vid', $this->question->vid)
-      ->condition('result_id', $this->result_id)
+      ->condition('result_id', $this->rid)
       ->execute();
   }
 
@@ -297,7 +299,7 @@ class TrueFalseResponse extends QuizQuestionResponse {
    * Implementation of getCorrectAnswer
    */
   public function getCorrectAnswer() {
-    return db_query('SELECT answer, score FROM {quiz_truefalse_user_answers} WHERE question_vid = :qvid AND result_id = :rid', array(':qvid' => $this->question->vid, ':rid' => $this->result_id))->fetch();
+    return db_query('SELECT answer, score FROM {quiz_truefalse_user_answers} WHERE question_vid = :qvid AND result_id = :rid', array(':qvid' => $this->question->vid, ':rid' => $this->rid))->fetch();
   }
 
   /**
@@ -340,5 +342,4 @@ class TrueFalseResponse extends QuizQuestionResponse {
       '#markup' => theme('truefalse_response', array('metadata' => $metadata, 'data' => $data)),
     );
   }
-
 }

@@ -7,11 +7,11 @@
  *  Classes modelling the long answer question and the long answer question response
  */
 
+
 /**
  * Extension of QuizQuestion.
  */
 class LongAnswerQuestion extends QuizQuestion {
-
   /**
    * Implementation of saveNodeProperties
    * @see QuizQuestion#saveNodeProperties($is_new)
@@ -43,9 +43,7 @@ class LongAnswerQuestion extends QuizQuestion {
    *
    * @see QuizQuestion#validateNode($form)
    */
-  public function validateNode(array &$form) {
-
-  }
+  public function validateNode(array &$form) { }
 
   /**
    * Implementation of delete
@@ -123,33 +121,25 @@ class LongAnswerQuestion extends QuizQuestion {
   /**
    * Implementation of getAnweringForm
    *
-   * @see QuizQuestion#getAnsweringForm($form_state, $result_id)
+   * @see QuizQuestion#getAnsweringForm($form_state, $rid)
    */
-  public function getAnsweringForm(array $form_state = NULL, $result_id) {
-    $element = parent::getAnsweringForm($form_state, $result_id);
+  public function getAnsweringForm(array $form_state = NULL, $rid) {
+    $form = parent::getAnsweringForm($form_state, $rid);
+    $form['#theme'] = 'long_answer_answering_form';
 
-    $element += array(
+    $form['tries'] = array(
       '#type' => 'textarea',
       '#title' => t('Answer'),
       '#description' => t('Enter your answer here. If you need more space, click on the grey bar at the bottom of this area and drag it down.'),
       '#rows' => 15,
       '#cols' => 60,
-      //'#theme' =>'long_answer_answering_form',
+      '#required' => FALSE, // See isValid() in LongAnswerResponse
     );
-    if (isset($result_id)) {
-      $response = new LongAnswerResponse($result_id, $this->node);
-      $element['#default_value'] = $response->getResponse();
+    if (isset($rid)) {
+      $response = new LongAnswerResponse($rid, $this->node);
+      $form['tries']['#default_value'] = $response->getResponse();
     }
-    return $element;
-  }
-
-  /**
-   * Question response validator.
-   */
-  public function getAnsweringFormValidate(array &$form, array &$form_state = NULL) {
-    if ($form_state['values']['question'][$this->node->nid] == '') {
-      form_set_error('', t('You must provide an answer'));
-    }
+    return $form;
   }
 
   /**
@@ -159,13 +149,13 @@ class LongAnswerQuestion extends QuizQuestion {
    */
   public function getCreationForm(array &$form_state = NULL) {
     $form['rubric'] = array(
-      '#type' => 'textarea',
-      '#title' => t('Rubric'),
-      '#description' => t('Specify the criteria for grading the response.'),
-      '#default_value' => isset($this->node->rubric) ? $this->node->rubric : '',
-      '#size' => 60,
-      '#maxlength' => 2048,
-      '#required' => FALSE,
+       '#type' => 'textarea',
+       '#title' => t('Rubric'),
+       '#description' => t('Specify the criteria for grading the response.'),
+       '#default_value' => isset($this->node->rubric) ? $this->node->rubric : '',
+       '#size' => 60,
+       '#maxlength' => 512,
+       '#required' => FALSE,
     );
     return $form;
   }
@@ -200,7 +190,7 @@ class LongAnswerResponse extends QuizQuestionResponse {
   public static function fetchAllUnscoredAnswers($count = 50, $offset = 0) {
     global $user;
     $query = db_select('quiz_long_answer_user_answers', 'a');
-    $query->fields('a', array('result_id', 'question_nid', 'question_vid', 'answer_feedback', 'answer_feedback_format'));
+    $query->fields('a', array('result_id', 'question_nid', 'question_vid', 'answer_feedback'));
     $query->fields('r', array('title'));
     $query->fields('qnr', array('time_end', 'time_start', 'uid'));
     $query->join('node_revision', 'r', 'a.question_vid = r.vid');
@@ -264,7 +254,7 @@ class LongAnswerResponse extends QuizQuestionResponse {
 
     if (!isset($answer)) {
       // Question has been answered allready. We fetch the answer data from the database.
-      $r = db_query('SELECT answer_id, answer, is_evaluated, score, question_vid, question_nid, result_id, answer_feedback, answer_feedback_format
+      $r = db_query('SELECT answer_id, answer, is_evaluated, score, question_vid, question_nid, result_id, answer_feedback
         FROM {quiz_long_answer_user_answers}
         WHERE question_nid = :qnid AND question_vid = :qvid AND result_id = :rid', array(':qnid' => $question_node->nid, ':qvid' => $question_node->vid, ':rid' => $result_id))->fetch();
 
@@ -274,13 +264,24 @@ class LongAnswerResponse extends QuizQuestionResponse {
         $this->evaluated = $r->is_evaluated;
         $this->answer_id = $r->answer_id;
         $this->answer_feedback = $r->answer_feedback;
-        $this->answer_feedback_format = $r->answer_feedback_format;
       }
     }
     else {
       $this->answer = $answer;
       $this->evaluated = FALSE;
     }
+  }
+
+  /**
+   * Implementation of isValid
+   *
+   * @see QuizQuestionResponse#isValid()
+   */
+  public function isValid() {
+    if (trim($this->answer) == '') {
+      return t('You must provide an answer');
+    }
+    return TRUE;
   }
 
   /**
@@ -294,7 +295,7 @@ class LongAnswerResponse extends QuizQuestionResponse {
         'answer' => $this->answer,
         'question_nid' => $this->question->nid,
         'question_vid' => $this->question->vid,
-        'result_id' => $this->result_id,
+        'result_id' => $this->rid,
       ))
       ->execute();
   }
@@ -308,7 +309,7 @@ class LongAnswerResponse extends QuizQuestionResponse {
     db_delete('quiz_long_answer_user_answers')
       ->condition('question_nid', $this->question->nid)
       ->condition('question_vid', $this->question->vid)
-      ->condition('result_id', $this->result_id)
+      ->condition('result_id', $this->rid)
       ->execute();
   }
 
@@ -319,7 +320,7 @@ class LongAnswerResponse extends QuizQuestionResponse {
    */
   public function score() {
     return (int) db_query('SELECT score FROM {quiz_long_answer_user_answers}
-      WHERE result_id = :result_id AND question_vid = :question_vid', array(':result_id' => $this->result_id, ':question_vid' => $this->question->vid))->fetchField();
+      WHERE result_id = :result_id AND question_vid = :question_vid', array(':result_id' => $this->rid, ':question_vid' => $this->question->vid))->fetchField();
   }
 
   /**
@@ -368,7 +369,7 @@ class LongAnswerResponse extends QuizQuestionResponse {
       $form['answer_feedback'] = array(
         '#title' => t('Feedback'),
         '#type' => 'item',
-        '#markup' => '<span class="quiz_answer_feedback">' . check_markup($this->answer_feedback, $this->answer_feedback_format) . '</span>',
+        '#markup' => '<span class="quiz_answer_feedback">' . $this->answer_feedback . '</span>',
       );
     }
     if (!empty($feedback)) {
@@ -404,14 +405,14 @@ class LongAnswerResponse extends QuizQuestionResponse {
     if (quiz_access_to_score() && $allow_scoring) {
       return array(
         '#title' => t('Enter feedback'),
-        '#type' => 'text_format',
-        '#default_value' => isset($this->answer_feedback) ? check_markup($this->answer_feedback, $this->answer_feedback_format) : '',
-        '#format' => isset($this->answer_feedback_format) ? $this->answer_feedback_format : NULL,
+        '#type' => 'textarea',
+        '#default_value' => isset($this->answer_feedback) ? check_markup($this->answer_feedback) : '',
         '#attributes' => array('class' => array('quiz-report-score')),
       );
     }
     return FALSE;
   }
+
 
   /**
    * Implementation of getReportFormSubmit
@@ -430,5 +431,5 @@ class LongAnswerResponse extends QuizQuestionResponse {
   public function getReportFormValidate($showfeedback = TRUE, $showpoints = TRUE, $allow_scoring = FALSE) {
     return $allow_scoring ? 'long_answer_report_validate' : FALSE;
   }
-
 }
+

@@ -64,4 +64,11 @@ dependencies[] = node_reference
 dependencies[] = panels
 dependencies[] = panels_ipe
 dependencies[] = panels_mini
+dependencies[] = quiz
+dependencies[] = fn_content_type
+dependencies[] = fn_custom_features
+dependencies[] = fn_custom_pages
+dependencies[] = fn_custom_views
+
+
 

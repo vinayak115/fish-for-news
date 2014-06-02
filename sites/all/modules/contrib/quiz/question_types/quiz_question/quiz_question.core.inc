@@ -134,7 +134,7 @@ abstract class QuizQuestion {
 
       // If coming from quiz view, go back there on submit.
       if ($quiz->type == 'quiz') {
-        $form_state['redirect'] = 'node/' . $quiz->nid . '/quiz/questions';
+        $form_state['redirect'] = 'node/' . $quiz->nid . '/questions';
         $form['#cancel_button'] = TRUE;
       }
     }
@@ -419,16 +419,26 @@ abstract class QuizQuestion {
    *
    * @param $form_state
    *  The FAPI form_state array
-   * @param $result_id
+   * @param $rid
    *  The result id.
    * @return
    *  Must return a FAPI array. At the moment all form elements that takes
    *  user response must have a key named "tries". (This is a Quiz 3.x legacy AFAIK. I'm
    *  not thrilled about it...)
    */
-  public function getAnsweringForm(array $form_state = NULL, $result_id) {
+  public function getAnsweringForm(array $form_state = NULL, $rid) {
     //echo $this->node->type;exit;
     $form = array();
+    $form['question_nid'] = array(
+      '#type' => 'hidden',
+      '#value' => $this->node->nid,
+    );
+    $body = field_get_items('node', $this->node, 'body');
+    $form['question'] = array(
+      '#markup' => check_markup($body[0]['value'], $body[0]['format']),
+      '#prefix' => '<div class="quiz-question-body">',
+      '#suffix' => '</div>',
+    );
     return $form;
   }
 
@@ -540,7 +550,7 @@ abstract class QuizQuestion {
           $delete_qnr->execute();
         }
         $insert_qnr = db_insert('quiz_node_relationship');
-        $insert_qnr->fields(array('parent_nid', 'parent_vid', 'child_nid', 'child_vid', 'max_score', 'weight', 'question_status', 'auto_update_max_score', 'qnr_id'));
+        $insert_qnr->fields(array('parent_nid', 'parent_vid', 'child_nid', 'child_vid', 'max_score', 'weight', 'question_status', 'auto_update_max_score'));
         foreach ($insert_values as $insert_value) {
           $insert_qnr->values($insert_value);
         }
@@ -639,23 +649,6 @@ abstract class QuizQuestion {
   protected function autoUpdateMaxScore() {
     return false;
   }
-
-  public function getAnsweringFormValidate(array &$form, array &$form_state = NULL) {
-
-  }
-
-  /**
-   * Is this question graded?
-   *
-   * Questions like Quiz Directions, Quiz Page, and Scale are not.
-   *
-   * By default, questions are expected to be gradeable
-   *
-   * @return bool
-   */
-  public function isGraded() {
-    return TRUE;
-  }
 }
 
 /**
@@ -664,7 +657,7 @@ abstract class QuizQuestion {
  */
 abstract class QuizQuestionResponse {
   // Result id
-  protected $result_id = 0;
+  protected $rid = 0;
 
   protected $is_correct = FALSE;
   protected $evaluated = TRUE;
@@ -689,7 +682,7 @@ abstract class QuizQuestionResponse {
    *  The answer (dependent on question type).
    */
   public function __construct($result_id, stdClass $question_node, $answer = NULL) {
-    $this->result_id = $result_id;
+    $this->rid = $result_id;
     $this->question = $question_node;
     $this->answer = $answer;
     $result = db_query('SELECT is_skipped, is_doubtful FROM {quiz_node_results_answers}
@@ -772,7 +765,7 @@ abstract class QuizQuestionResponse {
    *
    * Convert data to an object that has the following properties:
    * - $score
-   * - $result_id
+   * - $rid
    * - $nid
    * - $vid
    * - $is_correct
@@ -782,7 +775,7 @@ abstract class QuizQuestionResponse {
     $obj->score = $this->getScore(); // This can be 0 for unscored.
     $obj->nid = $this->question->nid;
     $obj->vid = $this->question->vid;
-    $obj->result_id = $this->result_id;
+    $obj->rid = $this->rid;
     $obj->is_correct = (int) $this->isCorrect();
     $obj->is_evaluated = $this->isEvaluated();
     $obj->is_skipped = 0;
@@ -825,7 +818,7 @@ abstract class QuizQuestionResponse {
       'score' => $this->getScore(),
       'question_vid' => $this->question->vid,
       'question_nid' => $this->question->nid,
-      'result_id' => $this->result_id,
+      'result_id' => $this->rid,
     );
     return $report;
   }
@@ -854,9 +847,9 @@ abstract class QuizQuestionResponse {
       '#type' => 'value',
       '#value' => $this->question->vid,
     );
-    $form['result_id'] = array(
+    $form['rid'] = array(
       '#type' => 'value',
-      '#value' => $this->result_id,
+      '#value' => $this->rid,
     );
     if ($submit = $this->getReportFormSubmit($showpoints, $showfeedback, $allow_scoring)) {
       $form['submit'] = array(
@@ -897,9 +890,8 @@ abstract class QuizQuestionResponse {
    */
   public function getReportFormQuestion($showpoints = TRUE, $showfeedback = TRUE) {
     $node = node_load($this->question->nid);
-    $node->no_answer_form = TRUE;
-    node_build_content($node, 'question');
-    return $node->content;
+    $items = field_get_items('node', $node, 'body');
+    return field_view_value('node', $node, 'body', $items[0]);
   }
 
   /**
@@ -965,7 +957,6 @@ abstract class QuizQuestionResponse {
 
   /**
    * Saves the quiz result. This is not used when a question is skipped!
-   * @todo. Now it is!
    */
   public function saveResult() {
     $this->is_skipped = FALSE;

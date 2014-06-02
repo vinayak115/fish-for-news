@@ -11,12 +11,22 @@
  * @param $result_id
  *  Result id
  */
-function quiz_user_results($node, $result_id) {
-  $result = quiz_result_load($result_id);
+function quiz_user_results($result_id) {
+  global $user;
+  $result = db_query('SELECT qnp.nid, qnp.vid, qnrs.uid
+    FROM {quiz_node_properties} qnp
+    INNER JOIN {quiz_node_results} qnrs ON qnrs.vid = qnp.vid
+    WHERE qnrs.result_id = :rid', array(':rid' => $result_id))->fetch();
 
   if ($result->nid) {
+    // User can view own results (quiz_menu sets access to 'own results').
+    // User with role 'user results' can view other user's results.
+    if ($result->uid != $user->uid && !user_access('view any quiz results')) {
+      drupal_access_denied();
+      return;
+    }
+
     $quiz = node_load($result->nid, $result->vid);
-    $current_quiz = node_load($result->nid);
     $questions = _quiz_get_answers($quiz, $result_id);
     $score = quiz_calculate_score($quiz, $result_id);
     $summary = _quiz_get_summary_text($quiz, $score);
@@ -25,16 +35,12 @@ function quiz_user_results($node, $result_id) {
       'questions' => $questions,
       'score' => $score,
       'summary' => $summary,
-      'result_id' => $result_id,
+      'rid' => $result_id,
     );
-    if (user_access('view own quiz results') || $current_quiz->display_feedback) {
-      // User can view own quiz results OR the current quiz has "display solution".
-      return theme('quiz_user_summary', $data);
-    }
-    else {
-      // User cannot view own results or show solution. Show summary.
-      return theme('quiz_take_summary', $data);
-    }
+    return theme('quiz_user_summary', $data);
+  }
+  else {
+    drupal_not_found();
   }
 }
 
@@ -82,16 +88,6 @@ function quiz_report_form($form, $form_state, $questions, $showpoints = TRUE, $s
       '#value' => t('Save Score'),
     );
   }
-
-  if (count($questions) == 1) {
-    // Just one question. Send to next question.
-    $form['next'] = array(
-      '#type' => 'submit',
-      '#submit' => array('quiz_take_question_feedback_submit'),
-      '#value' => t('Next question'),
-    );
-  }
-
   return $form;
 }
 
@@ -144,9 +140,9 @@ function quiz_report_form_submit($form, &$form_state) {
 
     // Load the quiz
     if (!isset($quiz)) {
-      $result = db_query('SELECT nid, uid, vid FROM {quiz_node_results} WHERE result_id = :result_id', array(':result_id' => $q_values['result_id']))->fetchObject();
+      $result = db_query('SELECT nid, uid, vid FROM {quiz_node_results} WHERE result_id = :result_id', array(':result_id' => $q_values['rid']))->fetchObject();
       $quiz = node_load($result->nid, $result->vid);
-      $result_id = $q_values['result_id'];
+      $rid = $q_values['rid'];
     }
 
     $q_values['quiz'] = $quiz;
@@ -155,14 +151,14 @@ function quiz_report_form_submit($form, &$form_state) {
     call_user_func($q_values['submit'], $q_values);
   }
   // Scores may have been changed. We take the necessary actions
-  quiz_update_total_score_fast($result_id, $quiz->vid);
+  quiz_update_total_score_fast($rid, $quiz->vid);
   $changed = db_update('quiz_node_results')
   ->fields(array(
     'is_evaluated' =>  1,
   ))
-  ->condition('result_id', $result_id)
+  ->condition('result_id', $rid)
   ->execute();
-  $results_got_deleted = _quiz_maintain_results($quiz, $result_id);
+  $results_got_deleted = _quiz_maintain_results($quiz, $rid);
 
   // A message saying the quiz is unscored has already been set. We unset it here...
   if($changed > 0) {
@@ -172,14 +168,14 @@ function quiz_report_form_submit($form, &$form_state) {
   // Notify the user if results got deleted as a result of him scoring an answer.
   $add = $quiz->keep_results == QUIZ_KEEP_BEST && $results_got_deleted ? ' ' . t('Note that this quiz is set to only keep each users best answer.') : '';
 
-  $score_data = quiz_get_score_array($result_id, $quiz->vid, TRUE);
+  $score_data = quiz_get_score_array($rid, $quiz->vid, TRUE);
 
-  module_invoke_all('quiz_scored', $quiz, $score_data, $result_id);
+  module_invoke_all('quiz_scored', $quiz, $score_data, $rid);
 
   drupal_set_message(t('The scoring data you provided has been saved.') . $add);
   if (user_access('score taken quiz answer') && !user_access('view any quiz results')) {
     if ($result && $result->uid == $user->uid) {
-      $form_state['redirect'] = 'node/' . $quiz->nid . '/quiz/results/' . $result_id;
+      $form_state['redirect'] = 'node/' . $quiz->nid . '/results/' . $rid;
     }
   }
 }
@@ -208,15 +204,15 @@ function _quiz_remove_unscored_message() {
 /**
  * Updates the total score using only one mySql query.
  *
- * @param $result_id
+ * @param $rid
  *  Result id
  * @param $quiz_vid
  *  Quiz node version id
  */
-function quiz_update_total_score_fast($result_id, $quiz_vid) {
+function quiz_update_total_score_fast($rid, $quiz_vid) {
 	$subq1 = db_select('quiz_node_results_answers', 'a');
 	$subq1
-		->condition('a.result_id', $result_id)
+		->condition('a.result_id', $rid)
 		->addExpression('SUM(a.points_awarded)');
 	$res1 = $subq1->execute()->fetchField();
 
@@ -228,24 +224,24 @@ function quiz_update_total_score_fast($result_id, $quiz_vid) {
 
 	db_update('quiz_node_results')
 		->expression('score', 'ROUND(100*(:res1/:res2))', array(':res1' => $res1, ':res2' => $res2))
-		->condition('result_id', $result_id)
+		->condition('result_id', $rid)
 		->execute();
 }
 
 /**
  * Returns an array of score information for a quiz
  *
- * @param unknown_type $result_id
+ * @param unknown_type $rid
  * @param unknown_type $quiz_vid
  * @param unknown_type $is_evaluated
  */
-function quiz_get_score_array($result_id, $quiz_vid, $is_evaluated) {
+function quiz_get_score_array($rid, $quiz_vid, $is_evaluated) {
   $properties = db_query('SELECT max_score, number_of_random_questions
           FROM {quiz_node_properties}
           WHERE vid = :vid', array(':vid' => $quiz_vid))->fetchObject();
   $total_score = db_query('SELECT SUM(points_awarded)
-          FROM {quiz_node_results_answers}
-          WHERE result_id = :result_id', array(':result_id' => $result_id))->fetchField();
+          FROM (quiz_node_results_answers)
+          WHERE result_id = :result_id', array(':result_id' => $rid))->fetchField();
 
   return array(
     'question_count' => $properties->number_of_random_questions + _quiz_get_num_always_questions($quiz_vid),
@@ -264,7 +260,7 @@ function quiz_get_score_array($result_id, $quiz_vid, $is_evaluated) {
  * @return
  *  HTML output for page.
  */
-function quiz_get_user_results($account) {
+function quiz_get_user_results($uid) {
   $results = array();
   $dbresult = db_query('SELECT DISTINCT(n.nid), n.title, qnp.pass_rate, qnrs.result_id, qnrs.time_start, qnrs.time_end, qnrs.score, qnrs.is_evaluated
     FROM {node} n
@@ -273,7 +269,7 @@ function quiz_get_user_results($account) {
     INNER JOIN {users} u ON u.uid = qnrs.uid
     WHERE n.type = :type
       AND u.uid = :uid
-    ORDER BY qnrs.result_id DESC', array(':type' => 'quiz', ':uid' => $account->uid));
+    ORDER BY qnrs.result_id DESC', array(':type' => 'quiz', ':uid' => $uid));
 
   // Create an array out of the results.
   foreach ($dbresult as $result) {
@@ -294,7 +290,8 @@ function quiz_my_results($node) {
     FROM {quiz_node_properties} qnp
     INNER JOIN {quiz_node_results} qnrs ON qnrs.vid = qnp.vid
     WHERE qnrs.uid = :uid AND qnrs.nid = :nid AND qnrs.is_evaluated = 1
-    ORDER BY qnrs.result_id DESC', array(':uid' => $user->uid, ':nid' => $node->nid)
+    ORDER BY qnrs.result_id DESC',
+    array(':uid' => $user->uid, ':nid' => $node->nid)
   );
   // Create an array out of the results.
   while ($line = $res->fetchAssoc()) {
@@ -344,10 +341,12 @@ function theme_quiz_get_user_results($variables) {
       'title'       => l($result['title'], 'node/' . $result['nid']),
       'time_start'  => format_date($result['time_start'], 'short'),
       'time_end'    => ($result['time_end'] > 0) ? format_date($result['time_end'], 'short') . '<br />' . t('Duration :  @value', array('@value' => $interval)) : t('In Progress'),
+
       'score'       => $score,
       'evaluated'   => $result['is_evaluated'] ? t('Yes') : t('No'),
       'op'          => l(t('View answers'), 'user/quiz/' . $result['result_id'] . '/userresults'),
     );
+
   }
 
   if (empty($rows)) {
@@ -475,23 +474,16 @@ function theme_quiz_progress($variables) {
   // Determine the percentage finished (not used, but left here for other implementations).
   //$progress = ($question_number*100)/$num_of_question;
 
-  $current_question = $question_number;
+  // Get the current question # by adding one.
+  $current_question = $question_number + 1;
 
-
+  if ($variables['allow_jumping']) {
+    $current_question = theme('quiz_jumper', array('current' => $current_question, 'num_questions' => $num_of_question));
+  }
 
   $output  = '';
   $output .= '<div id="quiz_progress">';
-
-  if ($variables['allow_jumping']) {
-    // Show jump form.
-    $current_question = drupal_get_form('quiz_jumper', $current_question, $num_of_question);
-    $output .= drupal_render($current_question);
-  }
-  else {
-    // Just text.
-    $output .= t('Question <span id="quiz-question-number">!x</span> of <span id="quiz-num-questions">@y</span>', array('!x' => $current_question, '@y' => $num_of_question));
-  }
-
+  $output .= t('Question <span id="quiz-question-number">!x</span> of <span id="quiz-num-questions">@y</span>', array('!x' => $current_question, '@y' => $num_of_question));
   $output .= '</div>' . "\n";
   // Add div to be used by jQuery countdown
   if ($variables['time_limit']) {
@@ -505,19 +497,28 @@ function theme_quiz_progress($variables) {
  * @see http://drupal.org/node/1354
  */
 function theme_quiz_jumper($variables) {
+  $current = $variables['current'];
+  $num_questions = $variables['num_questions'];
+  $output = '<select name="quiz-jumper" class="form-select" id="quiz-jumper">';
+  for ($i = 1; $i <= $num_questions; $i++) {
+    $extra = $i == $current ? ' selected="selected"' : '';
+    $output .= '<option value="' . $i . '"' . $extra . '>' . $i . '</option>';
+  }
+  $output .= '</select><span id="quiz-jumper-no-js">' . $current . '</span>';
   drupal_add_js('
     (function ($) {
       Drupal.behaviors.quizJumper = {
         attach: function(context, settings) {
           $("#quiz-jumper:not(.quizJumper-processed)", context).show().addClass("quizJumper-processed").change(function(){
-            $("#quiz-jumper #edit-submit").trigger("click");
+            $("[name=jump_to_question]").val($(this).val());
+            $("#edit-submit").trigger("click");
           });
           $("#quiz-jumper-no-js:not(.quizJumper-processed)").hide().addClass("quizJumper-processed");
         }
       };
     })(jQuery);
   ', array('type' => 'inline', 'scope' => JS_DEFAULT));
-  return '';
+  return $output;
 }
 
 /**
@@ -541,7 +542,7 @@ function theme_quiz_take_summary($variables) {
   $questions = $variables['questions'];
   $score = $variables['score'];
   $summary = $variables['summary'];
-  $result_id =  $variables['result_id'];
+  $rid =  $variables['rid'];
   // Set the title here so themers can adjust.
   drupal_set_title($quiz->title);
 
@@ -550,7 +551,7 @@ function theme_quiz_take_summary($variables) {
   if (!empty($score['possible_score'])) {
     if (!$score['is_evaluated']) {
       if (user_access('score taken quiz answer')) {
-        $msg = t('Parts of this @quiz have not been evaluated yet. The score below is not final. <a class="self-score" href="!result_url">Click here</a> to give scores on your own.', array('@quiz' => QUIZ_NAME, '!result_url' => url('node/' . $quiz->nid . '/results/' . $result_id)));
+        $msg = t('Parts of this @quiz have not been evaluated yet. The score below is not final. <a class="self-score" href="!result_url">Click here</a> to give scores on your own.', array('@quiz' => QUIZ_NAME, '!result_url' => url('node/' . $quiz->nid . '/results/' . $rid)));
       }
       else {
         $msg = t('Parts of this @quiz have not been evaluated yet. The score below is not final.', array('@quiz' => QUIZ_NAME));
@@ -591,18 +592,17 @@ function theme_quiz_take_summary($variables) {
  * @ingroup themeable
  */
 function theme_quiz_user_summary($variables) {
-  global $user;
   $quiz = $variables['quiz'];
   $questions = $variables['questions'];
   $score = $variables['score'];
   $summary = $variables['summary'];
-  $result_id = $variables['result_id'];
+  $rid = $variables['rid'];
   // Set the title here so themers can adjust.
   drupal_set_title($quiz->title);
 
   if (!$score['is_evaluated']) {
     if (user_access('score taken quiz answer')) {
-      $msg = t('Parts of this @quiz have not been evaluated yet. The score below is not final. <a class="self-score" href="!result_url">Click here</a> to give scores on your own.', array('@quiz' => QUIZ_NAME, '!result_url' => url('node/' . $quiz->nid . '/results/' . $result_id)));
+      $msg = t('Parts of this @quiz have not been evaluated yet. The score below is not final. <a class="self-score" href="!result_url">Click here</a> to give scores on your own.', array('@quiz' => QUIZ_NAME, '!result_url' => url('node/' . $quiz->nid . '/results/' . $rid)));
     }
     else {
       $msg = t('Parts of this @quiz have not been evaluated yet. The score below is not final.', array('@quiz' => QUIZ_NAME));
@@ -625,8 +625,7 @@ function theme_quiz_user_summary($variables) {
     $output .= '<div id="quiz_summary">' . $summary['result'] . '</div>' . "\n";
   }
   // Get the feedback for all questions.
-  $allow_scoring = quiz_allow_score_access($quiz);
-  $form = drupal_get_form('quiz_report_form', $questions, FALSE, TRUE, $allow_scoring);
+  $form = drupal_get_form('quiz_report_form', $questions, FALSE, TRUE);
   $output .= drupal_render($form);
   return $output;
 }
@@ -655,7 +654,7 @@ function theme_quiz_single_question_node($variables) {
   $node = $variables['question_node'];
   // This might seem meaningless, but it is designed this way to allow themes to add more
   // meaningful stuff here...
-  return drupal_render($node->content);
+  return drupal_render($node->content['body']);
 }
 
 /**

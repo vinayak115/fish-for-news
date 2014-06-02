@@ -1,7 +1,0 @@
-<?php
-/**
- * @file
- * Code for the fn_taxonomy feature.
- */
-
-include_once 'fn_taxonomy.features.inc';

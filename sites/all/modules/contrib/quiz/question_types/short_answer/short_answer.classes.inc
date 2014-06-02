@@ -130,13 +130,13 @@ class ShortAnswerQuestion extends QuizQuestion {
   /**
    * Implementation of getAnsweringForm
    *
-   * @see QuizQuestion#getAnsweringForm($form_state, $result_id)
+   * @see QuizQuestion#getAnsweringForm($form_state, $rid)
    */
-  public function getAnsweringForm(array $form_state = NULL, $result_id) {
-    $form = parent::getAnsweringForm($form_state, $result_id);
+  public function getAnsweringForm(array $form_state = NULL, $rid) {
+    $form = parent::getAnsweringForm($form_state, $rid);
     //$form['#theme'] = 'short_answer_answering_form';
 
-    $form = array(
+    $form['tries'] = array(
       '#type' => 'textfield',
       '#title' => t('Answer'),
       '#description' => t('Enter your answer here'),
@@ -147,21 +147,12 @@ class ShortAnswerQuestion extends QuizQuestion {
       '#attributes' => array('autocomplete' => 'off'),
     );
 
-    if (isset($result_id)) {
-      $response = new ShortAnswerResponse($result_id, $this->node);
-      $form['#default_value'] = $response->getResponse();
+    if (isset($rid)) {
+      $response = new ShortAnswerResponse($rid, $this->node);
+      $form['tries']['#default_value'] = $response->getResponse();
     }
 
     return $form;
-  }
-
-  /**
-   * Question response validator.
-   */
-  public function getAnsweringFormValidate(array &$form, array &$form_state = NULL) {
-    if ($form_state['values']['question'][$this->node->nid] == '') {
-      form_set_error('', t('You must provide an answer'));
-    }
   }
 
   /**
@@ -240,11 +231,11 @@ class ShortAnswerQuestion extends QuizQuestion {
    */
   public function evaluateAnswer($user_answer) {
     $score = 0;
-
+    
     // Ignore white spaces for correct answer and user's answer.
     $user_answer = trim($user_answer);
     $this->node->correct_answer = trim($this->node->correct_answer);
-
+    
     switch ($this->node->correct_answer_evaluation) {
       case self::ANSWER_MATCH:
         if ($user_answer == $this->node->correct_answer) {
@@ -284,7 +275,7 @@ class ShortAnswerResponse extends QuizQuestionResponse {
   public static function fetchAllUnscoredAnswers($count = 50, $offset = 0) {
     global $user;
     $query = db_select('quiz_short_answer_user_answers', 'a');
-    $query->fields('a', array('result_id', 'question_nid', 'question_vid', 'answer_feedback', 'answer_feedback_format'));
+    $query->fields('a', array('result_id', 'question_nid', 'question_vid', 'answer_feedback'));
     $query->fields('r', array('title'));
     $query->fields('qnr', array('time_end', 'time_start', 'uid'));
     $query->join('node_revision', 'r', 'a.question_vid = r.vid');
@@ -344,7 +335,7 @@ class ShortAnswerResponse extends QuizQuestionResponse {
   public function __construct($result_id, stdClass $question_node, $answer = NULL) {
     parent::__construct($result_id, $question_node, $answer);
     if (!isset($answer)) {
-      $r = db_query('SELECT answer_id, answer, is_evaluated, score, question_vid, question_nid, result_id, answer_feedback, answer_feedback_format
+      $r = db_query('SELECT answer_id, answer, is_evaluated, score, question_vid, question_nid, result_id, answer_feedback
         FROM {quiz_short_answer_user_answers}
         WHERE question_nid = :qnid AND question_vid = :qvid AND result_id = :rid',
         array(':qnid' => $question_node->nid, ':qvid' => $question_node->vid, ':rid' => $result_id)
@@ -356,7 +347,6 @@ class ShortAnswerResponse extends QuizQuestionResponse {
         $this->evaluated = $r->is_evaluated;
         $this->answer_id = $r->answer_id;
         $this->answer_feedback = $r->answer_feedback;
-        $this->answer_feedback_format = $r->answer_feedback_format;
       }
     }
     else {
@@ -368,6 +358,18 @@ class ShortAnswerResponse extends QuizQuestionResponse {
         $this->evaluated = $this->question->correct_answer_evaluation != ShortAnswerQuestion::ANSWER_MANUAL;
       }
     }
+  }
+
+  /**
+   * Implementation of isValid
+   *
+   * @see QuizQuestionResponse#isValid()
+   */
+  public function isValid() {
+    if (trim($this->answer) == '') {
+      return t('You must provide an answer');
+    }
+    return TRUE;
   }
 
   /**
@@ -383,7 +385,7 @@ class ShortAnswerResponse extends QuizQuestionResponse {
         'answer' => $this->answer,
         'question_nid' => $this->question->nid,
         'question_vid' => $this->question->vid,
-        'result_id' => $this->result_id,
+        'result_id' => $this->rid,
         'score' => $this->getScore(FALSE),
         'is_evaluated' => $this->is_evaluated,
       ))
@@ -399,7 +401,7 @@ class ShortAnswerResponse extends QuizQuestionResponse {
     db_delete('quiz_short_answer_user_answers')
       ->condition('question_nid', $this->question->nid)
       ->condition('question_vid', $this->question->vid)
-      ->condition('result_id', $this->result_id)
+      ->condition('result_id', $this->rid)
       ->execute();
   }
 
@@ -411,7 +413,7 @@ class ShortAnswerResponse extends QuizQuestionResponse {
   public function score() {
     // Manual scoring means we go with what is in the DB.
     if ($this->question->correct_answer_evaluation == ShortAnswerQuestion::ANSWER_MANUAL) {
-      $score = db_query('SELECT score FROM {quiz_short_answer_user_answers} WHERE result_id = :result_id AND question_vid = :question_vid', array(':result_id' => $this->result_id, ':question_vid' => $this->question->vid))->fetchField();
+      $score = db_query('SELECT score FROM {quiz_short_answer_user_answers} WHERE result_id = :result_id AND question_vid = :question_vid', array(':result_id' => $this->rid, ':question_vid' => $this->question->vid))->fetchField();
       if(!$score) {
         $score = 0;
       }
@@ -468,7 +470,7 @@ class ShortAnswerResponse extends QuizQuestionResponse {
       $form['answer_feedback'] = array(
         '#title' => t('Feedback'),
         '#type' => 'item',
-        '#markup' => '<span class="quiz_answer_feedback">' . check_markup($this->answer_feedback, $this->answer_feedback_format) . '</span>',
+        '#markup' => '<span class="quiz_answer_feedback">' . $this->answer_feedback . '</span>',
       );
     }
     if (!empty($feedback)) {
@@ -506,9 +508,8 @@ class ShortAnswerResponse extends QuizQuestionResponse {
     if (quiz_access_to_score() && $allow_scoring && $this->question->correct_answer_evaluation == ShortAnswerQuestion::ANSWER_MANUAL) {
       return array(
         '#title' => t('Enter feedback'),
-        '#type' => 'text_format',
+        '#type' => 'textarea',
         '#default_value' => $this->answer_feedback,
-        '#format' => isset($this->answer_feedback_format) ? $this->answer_feedback_format : NULL,
         '#attributes' => array('class' => array('quiz-report-score')),
       );
     }
