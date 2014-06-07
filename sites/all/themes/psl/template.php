@@ -130,3 +130,23 @@ function psl_preprocess_block(&$variables, $hook) {
   //}
 }
 // */
+/*
+function psl_theme() {
+
+     return array(
+         'user_profile_form' => array(
+             'template' => 'templates/user/user-profile-form'
+         ),
+     );
+
+}
+*/
+
+
+function psl_preprocess_page(&$variables, $hook) {
+    $variables['sample_variable'] = t('Lorem ipsum.');
+    if(isset($_SESSION['sub_menu_nodes'])){
+        $variables['nodes_submenu'] = $_SESSION['sub_menu_nodes'];
+        unset($_SESSION['sub_menu_nodes']);
+    }
+}

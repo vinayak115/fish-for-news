@@ -57,6 +57,9 @@ body {
 
 #banner {
 	text-align: left;
+    background:url('../images/orange/banner.jpg') no-repeat;
+    width:776px;
+    height:88px;
 }
 
 #content {
@@ -87,29 +90,35 @@ body {
     padding: 0px;
     margin: 0 0 0 20px;
 }
-#menu ul li {
+#menu ul li
+{
+    list-style: none;
+    float: left;
+
+}
+#menu ul li a
+{
+    text-decoration: none;
+    color: #055D85;
+    display: block;
     height: 29px;
     text-align: center;
     padding: 10px 0 0 0;
     font-weight: bold;
-    list-style: none;
-    float: left;
     width: 100px;
-}
-#menu ul li a {
-    text-decoration: none;
-    color: #055D85;
-}
-#menu ul li.selected {
-    background-image: url(../images/orange/selmenubg.jpg);
+    background-image: url('../images/menu_sep.jpg');
     background-repeat: no-repeat;
-    color: white;
+    background-position:  left top;
 }
-#menu ul li.menuitem {
-    background-image: url(../images/menu_sep.jpg);
+
+#menu ul li a.active
+{
+    background-image: url('../images/orange/selmenubg.jpg');
     background-repeat: no-repeat;
-    background-position: top left;
+    color: white
 }
+
+
 #menu ul li.menuitemn {
 }
 #submenu {

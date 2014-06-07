@@ -1,2 +1,66 @@
 <?php
 
+function fn_setup_menu() {
+    $items = array();
+
+    $items['pages/%'] = array(
+        'type' => MENU_CALLBACK,
+        'page arguments' => array(1),
+        'page callback' => 'fn_setup_page_handler',
+        'access arguments' => array('access content'),
+    );
+
+    $items['contact-us'] = array(
+        'type' => MENU_CALLBACK,
+        'page callback' => 'fn_setup_contact_handler',
+        'access arguments' => array('access content'),
+    );
+
+    return $items;
+}
+
+function fn_setup_init(){
+    drupal_add_css(path_to_theme().'/css/blue.css');
+}
+
+function fn_setup_page_handler($page){
+    switch($page){
+        case "technobyte":
+            drupal_add_css(path_to_theme().'/css/violet_css.css');
+            $name = "Techno Byte";
+            break;
+        case "happenings":
+            drupal_add_css(path_to_theme().'/css/pink.css');
+            $name = "Happenings";
+            break;
+        case "framed":
+            drupal_add_css(path_to_theme().'/css/green.css');
+            $name = "Framed";
+            break;
+        case "kaleidoscope":
+            drupal_add_css(path_to_theme().'/css/orange.css');
+            $name = "Kaleidoscope";
+            break;
+        case "vivagoem":
+            drupal_add_css(path_to_theme().'/css/red.css');
+            $name = "Viva Goem";
+            break;
+        default:
+            drupal_add_css(path_to_theme().'/css/blue.css');
+            break;
+    }
+    if(isset($name)){
+        $data = array_keys(taxonomy_get_term_by_name($name));
+        $view = views_get_view('nodes_list');
+        return $view->execute_display("default",array($data[0]));
+    }
+    return drupal_access_denied();
+}
+
+
+function fn_setup_contact_handler(){
+
+}
+
+
+

@@ -2,245 +2,65 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7289ad4a-cf98-44e0-adae-80730b68bbe2" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/sites/all/themes/psl/page.tpl.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/sites/all/themes/psl/templates/block--no-wrapper.tpl.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/sites/all/themes/psl/templates/block.tpl.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/sites/all/themes/psl/templates/comment-wrapper.tpl.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/sites/all/themes/psl/templates/comment.tpl.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/sites/all/themes/psl/templates/html.tpl.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/sites/all/themes/psl/templates/maintenance-page.tpl.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/sites/all/themes/psl/templates/node.tpl.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/sites/all/themes/psl/templates/page.tpl.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/sites/all/themes/psl/templates/pane-header.tpl.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/sites/all/themes/psl/templates/pane-messages.tpl.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/sites/all/themes/psl/templates/pane-navigation.tpl.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/sites/all/themes/psl/templates/panels-pane.tpl.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/sites/all/themes/psl/templates/region--footer.tpl.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/sites/all/themes/psl/templates/region--no-wrapper.tpl.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/sites/all/themes/psl/templates/region--sidebar.tpl.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/sites/all/themes/psl/templates/region.tpl.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/sites/all/themes/psl/templates/user-picture.tpl.php" />
-      <change type="DELETED" beforePath="E:\xampp\htdocs\fish-for-news\fish-for-news" afterPath="" />
-      <change type="DELETED" beforePath="E:\xampp\htdocs\fish-for-news\quiz\CHANGELOG.txt" afterPath="" />
-      <change type="DELETED" beforePath="E:\xampp\htdocs\fish-for-news\quiz\DEVELOPER.txt" afterPath="" />
-      <change type="DELETED" beforePath="E:\xampp\htdocs\fish-for-news\quiz\INSTALL.txt" afterPath="" />
-      <change type="DELETED" beforePath="E:\xampp\htdocs\fish-for-news\quiz\LICENSE.txt" afterPath="" />
-      <change type="DELETED" beforePath="E:\xampp\htdocs\fish-for-news\quiz\README.txt" afterPath="" />
-      <change type="DELETED" beforePath="E:\xampp\htdocs\fish-for-news\quiz\images\add.png" afterPath="" />
-      <change type="DELETED" beforePath="E:\xampp\htdocs\fish-for-news\quiz\images\correct.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\xampp\htdocs\fish-for-news\quiz\images\csv.png" afterPath="" />
-      <change type="DELETED" beforePath="E:\xampp\htdocs\fish-for-news\quiz\images\csv_complete.png" afterPath="" />
-      <change type="DELETED" beforePath="E:\xampp\htdocs\fish-for-news\quiz\images\html.png" afterPath="" />
-      <change type="DELETED" beforePath="E:\xampp\htdocs\fish-for-news\quiz\images\incorrect.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\xampp\htdocs\fish-for-news\quiz\images\selected.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\xampp\htdocs\fish-for-news\quiz\images\unselected.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\xampp\htdocs\fish-for-news\quiz\images\xml.png" afterPath="" />
-      <change type="DELETED" beforePath="E:\xampp\htdocs\fish-for-news\quiz\includes\ajax_quiz\ajax_quiz.admin.inc" afterPath="" />
-      <change type="DELETED" beforePath="E:\xampp\htdocs\fish-for-news\quiz\includes\ajax_quiz\ajax_quiz.info" afterPath="" />
-      <change type="DELETED" beforePath="E:\xampp\htdocs\fish-for-news\quiz\includes\ajax_quiz\ajax_quiz.js" afterPath="" />
-      <change type="DELETED" beforePath="E:\xampp\htdocs\fish-for-news\quiz\includes\ajax_quiz\ajax_quiz.module" afterPath="" />
-      <change type="DELETED" beforePath="E:\xampp\htdocs\fish-for-news\quiz\includes\quiz_stats\chart.png" afterPath="" />
-      <change type="DELETED" beforePath="E:\xampp\htdocs\fish-for-news\quiz\includes\quiz_stats\quiz_stats.admin.inc" afterPath="" />
-      <change type="DELETED" beforePath="E:\xampp\htdocs\fish-for-news\quiz\includes\quiz_stats\quiz_stats.css" afterPath="" />
-      <change type="DELETED" beforePath="E:\xampp\htdocs\fish-for-news\quiz\includes\quiz_stats\quiz_stats.info" afterPath="" />
-      <change type="DELETED" beforePath="E:\xampp\htdocs\fish-for-news\quiz\includes\quiz_stats\quiz_stats.module" afterPath="" />
-      <change type="DELETED" beforePath="E:\xampp\htdocs\fish-for-news\quiz\includes\quiz_stats\theme\quiz_stats_charts.tpl.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\xampp\htdocs\fish-for-news\quiz\includes\quiz_stats\theme\quiz_stats_revision_selector.tpl.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\xampp\htdocs\fish-for-news\quiz\includes\views\defaults\questions_by_quiz.inc" afterPath="" />
-      <change type="DELETED" beforePath="E:\xampp\htdocs\fish-for-news\quiz\includes\views\defaults\questions_by_quiz_version.inc" afterPath="" />
-      <change type="DELETED" beforePath="E:\xampp\htdocs\fish-for-news\quiz\includes\views\defaults\quiz_by_author.inc" afterPath="" />
-      <change type="DELETED" beforePath="E:\xampp\htdocs\fish-for-news\quiz\includes\views\defaults\quiz_by_taker.inc" afterPath="" />
-      <change type="DELETED" beforePath="E:\xampp\htdocs\fish-for-news\quiz\includes\views\handlers\quiz_views_handler_argument_quiz_nid.inc" afterPath="" />
-      <change type="DELETED" beforePath="E:\xampp\htdocs\fish-for-news\quiz\includes\views\handlers\quiz_views_handler_argument_user_uid_nullable.inc" afterPath="" />
-      <change type="DELETED" beforePath="E:\xampp\htdocs\fish-for-news\quiz\includes\views\handlers\quiz_views_handler_field_number_questions.inc" afterPath="" />
-      <change type="DELETED" beforePath="E:\xampp\htdocs\fish-for-news\quiz\includes\views\handlers\quiz_views_handler_field_question_status.inc" afterPath="" />
-      <change type="DELETED" beforePath="E:\xampp\htdocs\fish-for-news\quiz\includes\views\handlers\quiz_views_handler_field_score_aggregate.inc" afterPath="" />
-      <change type="DELETED" beforePath="E:\xampp\htdocs\fish-for-news\quiz\includes\views\handlers\quiz_views_handler_field_takes.inc" afterPath="" />
-      <change type="DELETED" beforePath="E:\xampp\htdocs\fish-for-news\quiz\includes\views\handlers\quiz_views_handler_field_time.inc" afterPath="" />
-      <change type="DELETED" beforePath="E:\xampp\htdocs\fish-for-news\quiz\includes\views\handlers\quiz_views_handler_field_user_quiz_state.inc" afterPath="" />
-      <change type="DELETED" beforePath="E:\xampp\htdocs\fish-for-news\quiz\includes\views\handlers\quiz_views_handler_filter_question_status.inc" afterPath="" />
-      <change type="DELETED" beforePath="E:\xampp\htdocs\fish-for-news\quiz\includes\views\handlers\quiz_views_handler_filter_quiz_nid.inc" afterPath="" />
-      <change type="DELETED" beforePath="E:\xampp\htdocs\fish-for-news\quiz\includes\views\handlers\quiz_views_handler_filter_user_nullable.inc" afterPath="" />
-      <change type="DELETED" beforePath="E:\xampp\htdocs\fish-for-news\quiz\includes\views\handlers\quiz_views_handler_filter_user_quiz_state.inc" afterPath="" />
-      <change type="DELETED" beforePath="E:\xampp\htdocs\fish-for-news\quiz\includes\views\handlers\quiz_views_handler_relationship_quiz_nid.inc" afterPath="" />
-      <change type="DELETED" beforePath="E:\xampp\htdocs\fish-for-news\quiz\includes\views\quiz.views.inc" afterPath="" />
-      <change type="DELETED" beforePath="E:\xampp\htdocs\fish-for-news\quiz\includes\views\quiz.views_default.inc" afterPath="" />
-      <change type="DELETED" beforePath="E:\xampp\htdocs\fish-for-news\quiz\question_types\long_answer\long_answer.admin.inc" afterPath="" />
-      <change type="DELETED" beforePath="E:\xampp\htdocs\fish-for-news\quiz\question_types\long_answer\long_answer.classes.inc" afterPath="" />
-      <change type="DELETED" beforePath="E:\xampp\htdocs\fish-for-news\quiz\question_types\long_answer\long_answer.info" afterPath="" />
-      <change type="DELETED" beforePath="E:\xampp\htdocs\fish-for-news\quiz\question_types\long_answer\long_answer.install" afterPath="" />
-      <change type="DELETED" beforePath="E:\xampp\htdocs\fish-for-news\quiz\question_types\long_answer\long_answer.module" afterPath="" />
-      <change type="DELETED" beforePath="E:\xampp\htdocs\fish-for-news\quiz\question_types\long_answer\long_answer.test" afterPath="" />
-      <change type="DELETED" beforePath="E:\xampp\htdocs\fish-for-news\quiz\question_types\long_answer\theme\long-answer-answering-form.tpl.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\xampp\htdocs\fish-for-news\quiz\question_types\long_answer\theme\long_answer.theme.inc" afterPath="" />
-      <change type="DELETED" beforePath="E:\xampp\htdocs\fish-for-news\quiz\question_types\matching\matching.classes.inc" afterPath="" />
-      <change type="DELETED" beforePath="E:\xampp\htdocs\fish-for-news\quiz\question_types\matching\matching.info" afterPath="" />
-      <change type="DELETED" beforePath="E:\xampp\htdocs\fish-for-news\quiz\question_types\matching\matching.install" afterPath="" />
-      <change type="DELETED" beforePath="E:\xampp\htdocs\fish-for-news\quiz\question_types\matching\matching.module" afterPath="" />
-      <change type="DELETED" beforePath="E:\xampp\htdocs\fish-for-news\quiz\question_types\matching\matching.test" afterPath="" />
-      <change type="DELETED" beforePath="E:\xampp\htdocs\fish-for-news\quiz\question_types\matching\theme\matching-answering-form.tpl.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\xampp\htdocs\fish-for-news\quiz\question_types\matching\theme\matching.theme.inc" afterPath="" />
-      <change type="DELETED" beforePath="E:\xampp\htdocs\fish-for-news\quiz\question_types\multichoice\README.txt" afterPath="" />
-      <change type="DELETED" beforePath="E:\xampp\htdocs\fish-for-news\quiz\question_types\multichoice\multichoice.classes.inc" afterPath="" />
-      <change type="DELETED" beforePath="E:\xampp\htdocs\fish-for-news\quiz\question_types\multichoice\multichoice.info" afterPath="" />
-      <change type="DELETED" beforePath="E:\xampp\htdocs\fish-for-news\quiz\question_types\multichoice\multichoice.install" afterPath="" />
-      <change type="DELETED" beforePath="E:\xampp\htdocs\fish-for-news\quiz\question_types\multichoice\multichoice.js" afterPath="" />
-      <change type="DELETED" beforePath="E:\xampp\htdocs\fish-for-news\quiz\question_types\multichoice\multichoice.module" afterPath="" />
-      <change type="DELETED" beforePath="E:\xampp\htdocs\fish-for-news\quiz\question_types\multichoice\multichoice.test" afterPath="" />
-      <change type="DELETED" beforePath="E:\xampp\htdocs\fish-for-news\quiz\question_types\multichoice\multichoice_update_6400.inc" afterPath="" />
-      <change type="DELETED" beforePath="E:\xampp\htdocs\fish-for-news\quiz\question_types\multichoice\theme\images\icons.png" afterPath="" />
-      <change type="DELETED" beforePath="E:\xampp\htdocs\fish-for-news\quiz\question_types\multichoice\theme\multichoice-alternative-creation.js" afterPath="" />
-      <change type="DELETED" beforePath="E:\xampp\htdocs\fish-for-news\quiz\question_types\multichoice\theme\multichoice-alternative-creation.tpl.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\xampp\htdocs\fish-for-news\quiz\question_types\multichoice\theme\multichoice-alternative.tpl.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\xampp\htdocs\fish-for-news\quiz\question_types\multichoice\theme\multichoice-answering-form.tpl.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\xampp\htdocs\fish-for-news\quiz\question_types\multichoice\theme\multichoice.css" afterPath="" />
-      <change type="DELETED" beforePath="E:\xampp\htdocs\fish-for-news\quiz\question_types\multichoice\theme\multichoice.theme.inc" afterPath="" />
-      <change type="DELETED" beforePath="E:\xampp\htdocs\fish-for-news\quiz\question_types\quiz_ddlines\js\colorwheel.js" afterPath="" />
-      <change type="DELETED" beforePath="E:\xampp\htdocs\fish-for-news\quiz\question_types\quiz_ddlines\js\quiz_ddlines.js" afterPath="" />
-      <change type="DELETED" beforePath="E:\xampp\htdocs\fish-for-news\quiz\question_types\quiz_ddlines\js\raphael-min.js" afterPath="" />
-      <change type="DELETED" beforePath="E:\xampp\htdocs\fish-for-news\quiz\question_types\quiz_ddlines\js\raphael.js" afterPath="" />
-      <change type="DELETED" beforePath="E:\xampp\htdocs\fish-for-news\quiz\question_types\quiz_ddlines\quiz_ddlines.classes.inc" afterPath="" />
-      <change type="DELETED" beforePath="E:\xampp\htdocs\fish-for-news\quiz\question_types\quiz_ddlines\quiz_ddlines.info" afterPath="" />
-      <change type="DELETED" beforePath="E:\xampp\htdocs\fish-for-news\quiz\question_types\quiz_ddlines\quiz_ddlines.install" afterPath="" />
-      <change type="DELETED" beforePath="E:\xampp\htdocs\fish-for-news\quiz\question_types\quiz_ddlines\quiz_ddlines.module" afterPath="" />
-      <change type="DELETED" beforePath="E:\xampp\htdocs\fish-for-news\quiz\question_types\quiz_ddlines\theme\images\close.png" afterPath="" />
-      <change type="DELETED" beforePath="E:\xampp\htdocs\fish-for-news\quiz\question_types\quiz_ddlines\theme\images\icon_ok.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\xampp\htdocs\fish-for-news\quiz\question_types\quiz_ddlines\theme\images\icon_wrong.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\xampp\htdocs\fish-for-news\quiz\question_types\quiz_ddlines\theme\images\icons.png" afterPath="" />
-      <change type="DELETED" beforePath="E:\xampp\htdocs\fish-for-news\quiz\question_types\quiz_ddlines\theme\quiz_ddlines.css" afterPath="" />
-      <change type="DELETED" beforePath="E:\xampp\htdocs\fish-for-news\quiz\question_types\quiz_ddlines\theme\quiz_ddlines.theme.inc" afterPath="" />
-      <change type="DELETED" beforePath="E:\xampp\htdocs\fish-for-news\quiz\question_types\quiz_directions\quiz_directions.classes.inc" afterPath="" />
-      <change type="DELETED" beforePath="E:\xampp\htdocs\fish-for-news\quiz\question_types\quiz_directions\quiz_directions.info" afterPath="" />
-      <change type="DELETED" beforePath="E:\xampp\htdocs\fish-for-news\quiz\question_types\quiz_directions\quiz_directions.install" afterPath="" />
-      <change type="DELETED" beforePath="E:\xampp\htdocs\fish-for-news\quiz\question_types\quiz_directions\quiz_directions.module" afterPath="" />
-      <change type="DELETED" beforePath="E:\xampp\htdocs\fish-for-news\quiz\question_types\quiz_directions\theme\quiz-directions-answering-form.tpl.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\xampp\htdocs\fish-for-news\quiz\question_types\quiz_question\quiz_question.core.inc" afterPath="" />
-      <change type="DELETED" beforePath="E:\xampp\htdocs\fish-for-news\quiz\question_types\quiz_question\quiz_question.info" afterPath="" />
-      <change type="DELETED" beforePath="E:\xampp\htdocs\fish-for-news\quiz\question_types\quiz_question\quiz_question.install" afterPath="" />
-      <change type="DELETED" beforePath="E:\xampp\htdocs\fish-for-news\quiz\question_types\quiz_question\quiz_question.module" afterPath="" />
-      <change type="DELETED" beforePath="E:\xampp\htdocs\fish-for-news\quiz\question_types\quiz_question\quiz_question.pages.inc" afterPath="" />
-      <change type="DELETED" beforePath="E:\xampp\htdocs\fish-for-news\quiz\question_types\quiz_question\quiz_question.theme.inc" afterPath="" />
-      <change type="DELETED" beforePath="E:\xampp\htdocs\fish-for-news\quiz\question_types\scale\README.txt" afterPath="" />
-      <change type="DELETED" beforePath="E:\xampp\htdocs\fish-for-news\quiz\question_types\scale\scale.classes.inc" afterPath="" />
-      <change type="DELETED" beforePath="E:\xampp\htdocs\fish-for-news\quiz\question_types\scale\scale.info" afterPath="" />
-      <change type="DELETED" beforePath="E:\xampp\htdocs\fish-for-news\quiz\question_types\scale\scale.install" afterPath="" />
-      <change type="DELETED" beforePath="E:\xampp\htdocs\fish-for-news\quiz\question_types\scale\scale.js" afterPath="" />
-      <change type="DELETED" beforePath="E:\xampp\htdocs\fish-for-news\quiz\question_types\scale\scale.module" afterPath="" />
-      <change type="DELETED" beforePath="E:\xampp\htdocs\fish-for-news\quiz\question_types\scale\scale.test" afterPath="" />
-      <change type="DELETED" beforePath="E:\xampp\htdocs\fish-for-news\quiz\question_types\scale\theme\scale-answering-form.tpl.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\xampp\htdocs\fish-for-news\quiz\question_types\scale\theme\scale.theme.inc" afterPath="" />
-      <change type="DELETED" beforePath="E:\xampp\htdocs\fish-for-news\quiz\question_types\short_answer\short_answer.admin.inc" afterPath="" />
-      <change type="DELETED" beforePath="E:\xampp\htdocs\fish-for-news\quiz\question_types\short_answer\short_answer.classes.inc" afterPath="" />
-      <change type="DELETED" beforePath="E:\xampp\htdocs\fish-for-news\quiz\question_types\short_answer\short_answer.info" afterPath="" />
-      <change type="DELETED" beforePath="E:\xampp\htdocs\fish-for-news\quiz\question_types\short_answer\short_answer.install" afterPath="" />
-      <change type="DELETED" beforePath="E:\xampp\htdocs\fish-for-news\quiz\question_types\short_answer\short_answer.module" afterPath="" />
-      <change type="DELETED" beforePath="E:\xampp\htdocs\fish-for-news\quiz\question_types\short_answer\short_answer.test" afterPath="" />
-      <change type="DELETED" beforePath="E:\xampp\htdocs\fish-for-news\quiz\question_types\short_answer\theme\short-answer-answering-form.tpl.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\xampp\htdocs\fish-for-news\quiz\question_types\short_answer\theme\short_answer.theme.inc" afterPath="" />
-      <change type="DELETED" beforePath="E:\xampp\htdocs\fish-for-news\quiz\question_types\truefalse\theme\truefalse-answering-form.tpl.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\xampp\htdocs\fish-for-news\quiz\question_types\truefalse\truefalse.classes.inc" afterPath="" />
-      <change type="DELETED" beforePath="E:\xampp\htdocs\fish-for-news\quiz\question_types\truefalse\truefalse.info" afterPath="" />
-      <change type="DELETED" beforePath="E:\xampp\htdocs\fish-for-news\quiz\question_types\truefalse\truefalse.install" afterPath="" />
-      <change type="DELETED" beforePath="E:\xampp\htdocs\fish-for-news\quiz\question_types\truefalse\truefalse.module" afterPath="" />
-      <change type="DELETED" beforePath="E:\xampp\htdocs\fish-for-news\quiz\question_types\truefalse\truefalse.test" afterPath="" />
-      <change type="DELETED" beforePath="E:\xampp\htdocs\fish-for-news\quiz\quiz.actions.inc" afterPath="" />
-      <change type="DELETED" beforePath="E:\xampp\htdocs\fish-for-news\quiz\quiz.admin.inc" afterPath="" />
-      <change type="DELETED" beforePath="E:\xampp\htdocs\fish-for-news\quiz\quiz.css" afterPath="" />
-      <change type="DELETED" beforePath="E:\xampp\htdocs\fish-for-news\quiz\quiz.help.inc" afterPath="" />
-      <change type="DELETED" beforePath="E:\xampp\htdocs\fish-for-news\quiz\quiz.info" afterPath="" />
-      <change type="DELETED" beforePath="E:\xampp\htdocs\fish-for-news\quiz\quiz.install" afterPath="" />
-      <change type="DELETED" beforePath="E:\xampp\htdocs\fish-for-news\quiz\quiz.module" afterPath="" />
-      <change type="DELETED" beforePath="E:\xampp\htdocs\fish-for-news\quiz\quiz.pages.inc" afterPath="" />
-      <change type="DELETED" beforePath="E:\xampp\htdocs\fish-for-news\quiz\quiz_datetime.inc" afterPath="" />
-      <change type="DELETED" beforePath="E:\xampp\htdocs\fish-for-news\quiz\theme\question_bg.png" afterPath="" />
-      <change type="DELETED" beforePath="E:\xampp\htdocs\fish-for-news\quiz\theme\quiz-questions-browser-body.tpl.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\xampp\htdocs\fish-for-news\quiz\theme\quiz-questions-browser-header.tpl.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\xampp\htdocs\fish-for-news\quiz\theme\quiz-report-form.tpl.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\xampp\htdocs\fish-for-news\quiz\theme\quiz-results-browser-body.tpl.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\xampp\htdocs\fish-for-news\quiz\theme\quiz-results-browser-header.tpl.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\xampp\htdocs\fish-for-news\quiz\theme\quiz_confirm.js" afterPath="" />
-      <change type="DELETED" beforePath="E:\xampp\htdocs\fish-for-news\quiz\theme\quiz_node_form.js" afterPath="" />
-      <change type="DELETED" beforePath="E:\xampp\htdocs\fish-for-news\quiz\theme\quiz_question_browser.js" afterPath="" />
-      <change type="DELETED" beforePath="E:\xampp\htdocs\fish-for-news\quiz\theme\quiz_results_browser.js" afterPath="" />
-      <change type="DELETED" beforePath="E:\xampp\htdocs\fish-for-news\quiz\theme\quiz_take.js" afterPath="" />
-      <change type="DELETED" beforePath="E:\xampp\htdocs\fish-for-news\sites\all\modules\custom\fn_cutom_menus\fn_cutom_menus.features.menu_custom.inc" afterPath="" />
-      <change type="DELETED" beforePath="E:\xampp\htdocs\fish-for-news\sites\all\modules\custom\fn_cutom_menus\fn_cutom_menus.features.menu_links.inc" afterPath="" />
-      <change type="DELETED" beforePath="E:\xampp\htdocs\fish-for-news\sites\all\modules\custom\fn_cutom_menus\fn_cutom_menus.info" afterPath="" />
-      <change type="DELETED" beforePath="E:\xampp\htdocs\fish-for-news\sites\all\modules\custom\fn_cutom_menus\fn_cutom_menus.module" afterPath="" />
-      <change type="DELETED" beforePath="E:\xampp\htdocs\fish-for-news\sites\all\modules\custom\fn_taxonomy\fn_taxonomy.features.field_base.inc" afterPath="" />
-      <change type="DELETED" beforePath="E:\xampp\htdocs\fish-for-news\sites\all\modules\custom\fn_taxonomy\fn_taxonomy.features.field_instance.inc" afterPath="" />
-      <change type="DELETED" beforePath="E:\xampp\htdocs\fish-for-news\sites\all\modules\custom\fn_taxonomy\fn_taxonomy.features.inc" afterPath="" />
-      <change type="DELETED" beforePath="E:\xampp\htdocs\fish-for-news\sites\all\modules\custom\fn_taxonomy\fn_taxonomy.features.node_export_features.inc" afterPath="" />
-      <change type="DELETED" beforePath="E:\xampp\htdocs\fish-for-news\sites\all\modules\custom\fn_taxonomy\fn_taxonomy.features.taxonomy.inc" afterPath="" />
-      <change type="DELETED" beforePath="E:\xampp\htdocs\fish-for-news\sites\all\modules\custom\fn_taxonomy\fn_taxonomy.info" afterPath="" />
-      <change type="DELETED" beforePath="E:\xampp\htdocs\fish-for-news\sites\all\modules\custom\fn_taxonomy\fn_taxonomy.module" afterPath="" />
-      <change type="DELETED" beforePath="E:\xampp\htdocs\fish-for-news\sites\all\modules\custom\view_fea\view_fea.features.inc" afterPath="" />
-      <change type="DELETED" beforePath="E:\xampp\htdocs\fish-for-news\sites\all\modules\custom\view_fea\view_fea.info" afterPath="" />
-      <change type="DELETED" beforePath="E:\xampp\htdocs\fish-for-news\sites\all\modules\custom\view_fea\view_fea.module" afterPath="" />
-      <change type="DELETED" beforePath="E:\xampp\htdocs\fish-for-news\sites\all\modules\custom\view_fea\view_fea.views_default.inc" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/sites/all/themes/psl/images/happening/banner.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/sites/all/themes/psl/images/happening/bgvert.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/sites/all/themes/psl/images/happening/footer.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/sites/all/themes/psl/images/happening/header2.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/sites/all/themes/psl/images/happening/menu_sep.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/sites/all/themes/psl/images/happening/menubg.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/sites/all/themes/psl/images/happening/selmenubg.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/sites/all/themes/psl/images/happening/submenu_sep.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/sites/all/modules/contrib/comment_easy_reply/LICENSE.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/sites/all/modules/contrib/comment_easy_reply/README.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/sites/all/modules/contrib/comment_easy_reply/comment_easy_reply.admin.inc" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/sites/all/modules/contrib/comment_easy_reply/comment_easy_reply.api.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/sites/all/modules/contrib/comment_easy_reply/comment_easy_reply.comment_easy_reply.inc" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/sites/all/modules/contrib/comment_easy_reply/comment_easy_reply.info" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/sites/all/modules/contrib/comment_easy_reply/comment_easy_reply.install" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/sites/all/modules/contrib/comment_easy_reply/comment_easy_reply.module" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/sites/all/modules/contrib/comment_easy_reply/comment_easy_reply.theme.inc" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/sites/all/modules/contrib/comment_easy_reply/css/comment_easy_reply.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/sites/all/modules/contrib/comment_easy_reply/js/comment_easy_reply-admin.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/sites/all/modules/contrib/comment_easy_reply/js/comment_easy_reply-tooltip.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/sites/all/modules/contrib/comment_easy_reply/js/comment_easy_reply.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/sites/all/modules/contrib/comment_easy_reply/modules/beautytips/comment_easy_reply_beautytips.comment_easy_reply.inc" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/sites/all/modules/contrib/comment_easy_reply/modules/beautytips/comment_easy_reply_beautytips.info" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/sites/all/modules/contrib/comment_easy_reply/modules/beautytips/comment_easy_reply_beautytips.install" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/sites/all/modules/contrib/comment_easy_reply/modules/beautytips/comment_easy_reply_beautytips.module" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/sites/all/modules/contrib/comment_easy_reply/modules/node/comment_easy_reply_node.admin.inc" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/sites/all/modules/contrib/comment_easy_reply/modules/node/comment_easy_reply_node.comment_easy_reply.inc" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/sites/all/modules/contrib/comment_easy_reply/modules/node/comment_easy_reply_node.info" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/sites/all/modules/contrib/comment_easy_reply/modules/node/comment_easy_reply_node.install" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/sites/all/modules/contrib/comment_easy_reply/modules/node/comment_easy_reply_node.module" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/sites/all/modules/contrib/comment_easy_reply/modules/node/js/comment_easy_reply_node.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/sites/all/modules/contrib/comment_easy_reply/modules/qtip/comment_easy_reply_qtip.comment_easy_reply.inc" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/sites/all/modules/contrib/comment_easy_reply/modules/qtip/comment_easy_reply_qtip.info" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/sites/all/modules/contrib/comment_easy_reply/modules/qtip/comment_easy_reply_qtip.install" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/sites/all/modules/contrib/comment_easy_reply/modules/qtip/comment_easy_reply_qtip.module" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/sites/all/modules/contrib/comment_easy_reply/modules/qtip/js/comment_easy_reply_qtip.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/sites/all/modules/contrib/comment_easy_reply/templates/comment-easy-reply-comment-number-link.tpl.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/sites/all/modules/contrib/comment_easy_reply/templates/comment-easy-reply-comment-number-tips.tpl.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/sites/all/modules/contrib/comment_easy_reply/templates/comment-easy-reply-comment-referrer-link.tpl.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/sites/all/modules/contrib/comment_easy_reply/templates/comment-easy-reply-comment-referrer-tips.tpl.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/sites/all/modules/contrib/comment_easy_reply/views/comment_easy_reply.views.inc" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/sites/all/modules/contrib/comment_easy_reply/views/views_handler_field_comment_easy_reply_comment_body.inc" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/sites/all/modules/contrib/comment_easy_reply/views/views_handler_field_comment_easy_reply_comment_number.inc" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/sites/all/modules/contrib/comment_easy_reply/views/views_handler_field_comment_easy_reply_comment_title.inc" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/sites/all/modules/contrib/comment_easy_reply/views/views_handler_field_comment_easy_reply_link_quote.inc" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/sites/all/modules/contrib/comment_easy_reply/views/views_handler_field_comment_easy_reply_link_reply.inc" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/sites/all/modules/contrib/comment_easy_reply/views/views_handler_sort_comment_easy_reply_comment_number.inc" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/sites/all/themes/psl/css/pink.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sites/all/modules/contrib/quiz/DEVELOPER.txt" afterPath="$PROJECT_DIR$/sites/all/modules/contrib/quiz/DEVELOPER.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sites/all/modules/contrib/quiz/includes/ajax_quiz/ajax_quiz.info" afterPath="$PROJECT_DIR$/sites/all/modules/contrib/quiz/includes/ajax_quiz/ajax_quiz.info" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sites/all/modules/contrib/quiz/includes/quiz_stats/quiz_stats.info" afterPath="$PROJECT_DIR$/sites/all/modules/contrib/quiz/includes/quiz_stats/quiz_stats.info" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sites/all/modules/contrib/quiz/includes/quiz_stats/quiz_stats.module" afterPath="$PROJECT_DIR$/sites/all/modules/contrib/quiz/includes/quiz_stats/quiz_stats.module" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sites/all/modules/contrib/quiz/includes/views/quiz.views.inc" afterPath="$PROJECT_DIR$/sites/all/modules/contrib/quiz/includes/views/quiz.views.inc" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sites/all/modules/contrib/quiz/question_types/long_answer/long_answer.admin.inc" afterPath="$PROJECT_DIR$/sites/all/modules/contrib/quiz/question_types/long_answer/long_answer.admin.inc" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sites/all/modules/contrib/quiz/question_types/long_answer/long_answer.classes.inc" afterPath="$PROJECT_DIR$/sites/all/modules/contrib/quiz/question_types/long_answer/long_answer.classes.inc" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sites/all/modules/contrib/quiz/question_types/long_answer/long_answer.info" afterPath="$PROJECT_DIR$/sites/all/modules/contrib/quiz/question_types/long_answer/long_answer.info" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sites/all/modules/contrib/quiz/question_types/long_answer/long_answer.install" afterPath="$PROJECT_DIR$/sites/all/modules/contrib/quiz/question_types/long_answer/long_answer.install" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sites/all/modules/contrib/quiz/question_types/long_answer/long_answer.module" afterPath="$PROJECT_DIR$/sites/all/modules/contrib/quiz/question_types/long_answer/long_answer.module" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sites/all/modules/contrib/quiz/question_types/long_answer/long_answer.test" afterPath="$PROJECT_DIR$/sites/all/modules/contrib/quiz/question_types/long_answer/long_answer.test" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sites/all/modules/contrib/quiz/question_types/matching/matching.classes.inc" afterPath="$PROJECT_DIR$/sites/all/modules/contrib/quiz/question_types/matching/matching.classes.inc" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sites/all/modules/contrib/quiz/question_types/matching/matching.info" afterPath="$PROJECT_DIR$/sites/all/modules/contrib/quiz/question_types/matching/matching.info" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sites/all/modules/contrib/quiz/question_types/matching/matching.install" afterPath="$PROJECT_DIR$/sites/all/modules/contrib/quiz/question_types/matching/matching.install" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sites/all/modules/contrib/quiz/question_types/matching/matching.module" afterPath="$PROJECT_DIR$/sites/all/modules/contrib/quiz/question_types/matching/matching.module" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sites/all/modules/contrib/quiz/question_types/matching/matching.test" afterPath="$PROJECT_DIR$/sites/all/modules/contrib/quiz/question_types/matching/matching.test" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sites/all/modules/contrib/quiz/question_types/multichoice/multichoice.classes.inc" afterPath="$PROJECT_DIR$/sites/all/modules/contrib/quiz/question_types/multichoice/multichoice.classes.inc" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sites/all/modules/contrib/quiz/question_types/multichoice/multichoice.info" afterPath="$PROJECT_DIR$/sites/all/modules/contrib/quiz/question_types/multichoice/multichoice.info" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sites/all/modules/contrib/quiz/question_types/multichoice/multichoice.install" afterPath="$PROJECT_DIR$/sites/all/modules/contrib/quiz/question_types/multichoice/multichoice.install" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sites/all/modules/contrib/quiz/question_types/multichoice/multichoice.module" afterPath="$PROJECT_DIR$/sites/all/modules/contrib/quiz/question_types/multichoice/multichoice.module" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sites/all/modules/contrib/quiz/question_types/multichoice/multichoice.test" afterPath="$PROJECT_DIR$/sites/all/modules/contrib/quiz/question_types/multichoice/multichoice.test" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sites/all/modules/contrib/quiz/question_types/multichoice/theme/multichoice.theme.inc" afterPath="$PROJECT_DIR$/sites/all/modules/contrib/quiz/question_types/multichoice/theme/multichoice.theme.inc" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sites/all/modules/contrib/quiz/question_types/quiz_ddlines/quiz_ddlines.classes.inc" afterPath="$PROJECT_DIR$/sites/all/modules/contrib/quiz/question_types/quiz_ddlines/quiz_ddlines.classes.inc" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sites/all/modules/contrib/quiz/question_types/quiz_ddlines/quiz_ddlines.info" afterPath="$PROJECT_DIR$/sites/all/modules/contrib/quiz/question_types/quiz_ddlines/quiz_ddlines.info" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sites/all/modules/contrib/quiz/question_types/quiz_ddlines/quiz_ddlines.install" afterPath="$PROJECT_DIR$/sites/all/modules/contrib/quiz/question_types/quiz_ddlines/quiz_ddlines.install" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sites/all/modules/contrib/quiz/question_types/quiz_ddlines/quiz_ddlines.module" afterPath="$PROJECT_DIR$/sites/all/modules/contrib/quiz/question_types/quiz_ddlines/quiz_ddlines.module" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sites/all/modules/contrib/quiz/question_types/quiz_directions/quiz_directions.classes.inc" afterPath="$PROJECT_DIR$/sites/all/modules/contrib/quiz/question_types/quiz_directions/quiz_directions.classes.inc" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sites/all/modules/contrib/quiz/question_types/quiz_directions/quiz_directions.info" afterPath="$PROJECT_DIR$/sites/all/modules/contrib/quiz/question_types/quiz_directions/quiz_directions.info" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sites/all/modules/contrib/quiz/question_types/quiz_directions/quiz_directions.module" afterPath="$PROJECT_DIR$/sites/all/modules/contrib/quiz/question_types/quiz_directions/quiz_directions.module" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sites/all/modules/contrib/quiz/question_types/quiz_question/quiz_question.core.inc" afterPath="$PROJECT_DIR$/sites/all/modules/contrib/quiz/question_types/quiz_question/quiz_question.core.inc" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sites/all/modules/contrib/quiz/question_types/quiz_question/quiz_question.info" afterPath="$PROJECT_DIR$/sites/all/modules/contrib/quiz/question_types/quiz_question/quiz_question.info" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sites/all/modules/contrib/quiz/question_types/quiz_question/quiz_question.install" afterPath="$PROJECT_DIR$/sites/all/modules/contrib/quiz/question_types/quiz_question/quiz_question.install" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sites/all/modules/contrib/quiz/question_types/quiz_question/quiz_question.module" afterPath="$PROJECT_DIR$/sites/all/modules/contrib/quiz/question_types/quiz_question/quiz_question.module" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sites/all/modules/contrib/quiz/question_types/quiz_question/quiz_question.pages.inc" afterPath="$PROJECT_DIR$/sites/all/modules/contrib/quiz/question_types/quiz_question/quiz_question.pages.inc" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sites/all/modules/contrib/quiz/question_types/quiz_question/quiz_question.theme.inc" afterPath="$PROJECT_DIR$/sites/all/modules/contrib/quiz/question_types/quiz_question/quiz_question.theme.inc" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sites/all/modules/contrib/quiz/question_types/scale/scale.classes.inc" afterPath="$PROJECT_DIR$/sites/all/modules/contrib/quiz/question_types/scale/scale.classes.inc" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sites/all/modules/contrib/quiz/question_types/scale/scale.info" afterPath="$PROJECT_DIR$/sites/all/modules/contrib/quiz/question_types/scale/scale.info" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sites/all/modules/contrib/quiz/question_types/scale/scale.install" afterPath="$PROJECT_DIR$/sites/all/modules/contrib/quiz/question_types/scale/scale.install" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sites/all/modules/contrib/quiz/question_types/scale/scale.module" afterPath="$PROJECT_DIR$/sites/all/modules/contrib/quiz/question_types/scale/scale.module" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sites/all/modules/contrib/quiz/question_types/scale/scale.test" afterPath="$PROJECT_DIR$/sites/all/modules/contrib/quiz/question_types/scale/scale.test" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sites/all/modules/contrib/quiz/question_types/short_answer/short_answer.admin.inc" afterPath="$PROJECT_DIR$/sites/all/modules/contrib/quiz/question_types/short_answer/short_answer.admin.inc" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sites/all/modules/contrib/quiz/question_types/short_answer/short_answer.classes.inc" afterPath="$PROJECT_DIR$/sites/all/modules/contrib/quiz/question_types/short_answer/short_answer.classes.inc" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sites/all/modules/contrib/quiz/question_types/short_answer/short_answer.info" afterPath="$PROJECT_DIR$/sites/all/modules/contrib/quiz/question_types/short_answer/short_answer.info" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sites/all/modules/contrib/quiz/question_types/short_answer/short_answer.install" afterPath="$PROJECT_DIR$/sites/all/modules/contrib/quiz/question_types/short_answer/short_answer.install" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sites/all/modules/contrib/quiz/question_types/short_answer/short_answer.module" afterPath="$PROJECT_DIR$/sites/all/modules/contrib/quiz/question_types/short_answer/short_answer.module" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sites/all/modules/contrib/quiz/question_types/short_answer/short_answer.test" afterPath="$PROJECT_DIR$/sites/all/modules/contrib/quiz/question_types/short_answer/short_answer.test" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sites/all/modules/contrib/quiz/question_types/truefalse/truefalse.classes.inc" afterPath="$PROJECT_DIR$/sites/all/modules/contrib/quiz/question_types/truefalse/truefalse.classes.inc" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sites/all/modules/contrib/quiz/question_types/truefalse/truefalse.info" afterPath="$PROJECT_DIR$/sites/all/modules/contrib/quiz/question_types/truefalse/truefalse.info" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sites/all/modules/contrib/quiz/question_types/truefalse/truefalse.install" afterPath="$PROJECT_DIR$/sites/all/modules/contrib/quiz/question_types/truefalse/truefalse.install" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sites/all/modules/contrib/quiz/question_types/truefalse/truefalse.module" afterPath="$PROJECT_DIR$/sites/all/modules/contrib/quiz/question_types/truefalse/truefalse.module" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sites/all/modules/contrib/quiz/question_types/truefalse/truefalse.test" afterPath="$PROJECT_DIR$/sites/all/modules/contrib/quiz/question_types/truefalse/truefalse.test" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sites/all/modules/contrib/quiz/quiz.admin.inc" afterPath="$PROJECT_DIR$/sites/all/modules/contrib/quiz/quiz.admin.inc" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sites/all/modules/contrib/quiz/quiz.css" afterPath="$PROJECT_DIR$/sites/all/modules/contrib/quiz/quiz.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sites/all/modules/contrib/quiz/quiz.info" afterPath="$PROJECT_DIR$/sites/all/modules/contrib/quiz/quiz.info" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sites/all/modules/contrib/quiz/quiz.install" afterPath="$PROJECT_DIR$/sites/all/modules/contrib/quiz/quiz.install" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sites/all/modules/contrib/quiz/quiz.module" afterPath="$PROJECT_DIR$/sites/all/modules/contrib/quiz/quiz.module" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sites/all/modules/contrib/quiz/quiz.pages.inc" afterPath="$PROJECT_DIR$/sites/all/modules/contrib/quiz/quiz.pages.inc" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sites/all/modules/contrib/quiz/theme/quiz_confirm.js" afterPath="$PROJECT_DIR$/sites/all/modules/contrib/quiz/theme/quiz_confirm.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sites/all/modules/custom/fn_setup/fn_setup.info" afterPath="$PROJECT_DIR$/sites/all/modules/custom/fn_setup/fn_setup.info" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sites/all/modules/custom/fn_setup/fn_setup.module" afterPath="$PROJECT_DIR$/sites/all/modules/custom/fn_setup/fn_setup.module" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sites/all/themes/psl/css/blue.css" afterPath="$PROJECT_DIR$/sites/all/themes/psl/css/blue.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sites/all/themes/psl/css/green.css" afterPath="$PROJECT_DIR$/sites/all/themes/psl/css/green.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sites/all/themes/psl/css/orange.css" afterPath="$PROJECT_DIR$/sites/all/themes/psl/css/orange.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sites/all/themes/psl/css/red.css" afterPath="$PROJECT_DIR$/sites/all/themes/psl/css/red.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sites/all/themes/psl/css/violet_css.css" afterPath="$PROJECT_DIR$/sites/all/themes/psl/css/violet_css.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sites/all/themes/psl/page.tpl.php" afterPath="$PROJECT_DIR$/sites/all/themes/psl/page.tpl.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sites/all/themes/psl/psl.info" afterPath="$PROJECT_DIR$/sites/all/themes/psl/psl.info" />
-      <change type="MOVED" beforePath="E:\xampp\htdocs\fish-for-news\profiles\fish4news\fish4.install" afterPath="$PROJECT_DIR$/profiles/fish4news/fish4news.install" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sites/all/themes/psl/template.php" afterPath="$PROJECT_DIR$/sites/all/themes/psl/template.php" />
     </list>
     <ignored path="pslnewsletter.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -263,10 +83,58 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
+      <file leaf-file-name="psl.info" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/sites/all/themes/psl/psl.info">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="14" column="13" selection-start="374" selection-end="374" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="page.tpl.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/sites/all/themes/psl/page.tpl.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="14" column="15" selection-start="373" selection-end="373" vertical-scroll-proportion="-9.153846">
+              <folding>
+                <marker date="1402144771338" expanded="true" signature="400:480" placeholder="..." />
+                <marker date="1402144771338" expanded="true" signature="543:588" placeholder="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="fn_setup.module" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/sites/all/modules/custom/fn_setup/fn_setup.module">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="54" column="65" selection-start="1626" selection-end="1626" vertical-scroll-proportion="-4.576923">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="fn_setup.info" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/sites/all/modules/custom/fn_setup/fn_setup.info">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="61" column="27" selection-start="1736" selection-end="1736" vertical-scroll-proportion="0.0">
+            <state line="19" column="22" selection-start="543" selection-end="543" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="comment_easy_reply.admin.inc" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/sites/all/modules/contrib/comment_easy_reply/comment_easy_reply.admin.inc">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="fish4news.info" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/profiles/fish4news/fish4news.info">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="16" column="25" selection-start="412" selection-end="420" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -275,25 +143,18 @@
       <file leaf-file-name="template.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/sites/all/themes/psl/template.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="104" column="27" selection-start="3323" selection-end="3323" vertical-scroll-proportion="-58.192307">
-              <folding />
+            <state line="148" column="20" selection-start="4745" selection-end="4758" vertical-scroll-proportion="-13.076923">
+              <folding>
+                <element signature="e#6#199#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="psl.info" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/sites/all/themes/psl/psl.info">
+      <file leaf-file-name="theme.inc" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/includes/theme.inc">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="13" column="10" selection-start="333" selection-end="333" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="page.tpl.php" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/sites/all/themes/psl/page.tpl.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="61" selection-start="53" selection-end="61" vertical-scroll-proportion="0.0">
+            <state line="636" column="24" selection-start="21996" selection-end="21996" vertical-scroll-proportion="-7.230769">
               <folding />
             </state>
           </provider>
@@ -312,19 +173,22 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/sites/all/modules/contrib/admin_menu/admin_menu.info" />
-        <option value="$PROJECT_DIR$/.gitignore" />
-        <option value="$PROJECT_DIR$/sites/all/modules/contrib/admin_menu/admin_menu.api.php" />
-        <option value="$PROJECT_DIR$/profiles/fish4news/fish4news.info" />
-        <option value="$PROJECT_DIR$/profiles/fish4news/fish4.install" />
-        <option value="$PROJECT_DIR$/sites/all/modules/custom/view_fea/view_fea.views_default.inc" />
-        <option value="$PROJECT_DIR$/sites/all/themes/zen/zen.info" />
-        <option value="$PROJECT_DIR$/sites/all/themes/psl/template.php" />
-        <option value="$PROJECT_DIR$/sites/all/themes/psl/theme-settings.php" />
-        <option value="$PROJECT_DIR$/sites/all/modules/custom/fn_setup/fn_setup.info" />
+        <option value="$PROJECT_DIR$/includes/menu.inc" />
         <option value="$PROJECT_DIR$/sites/all/themes/psl/psl.info" />
-        <option value="$PROJECT_DIR$/sites/all/themes/psl/templates/html.tpl.php" />
+        <option value="$PROJECT_DIR$/sites/all/themes/zen/STARTERKIT/template.php" />
+        <option value="$PROJECT_DIR$/sites/all/themes/psl/css/blue.css" />
+        <option value="$PROJECT_DIR$/sites/all/themes/psl/css/violet_css.css" />
+        <option value="$PROJECT_DIR$/sites/all/themes/psl/css/pink.css" />
+        <option value="$PROJECT_DIR$/sites/all/themes/psl/css/green.css" />
+        <option value="$PROJECT_DIR$/sites/all/themes/psl/css/orange.css" />
+        <option value="$PROJECT_DIR$/sites/all/themes/psl/css/red.css" />
+        <option value="$PROJECT_DIR$/includes/theme.inc" />
+        <option value="$PROJECT_DIR$/sites/all/themes/psl/node--article.tpl.php" />
+        <option value="$PROJECT_DIR$/sites/all/themes/psl/node--articles.tpl.php" />
+        <option value="$PROJECT_DIR$/sites/all/themes/psl/template.php" />
         <option value="$PROJECT_DIR$/sites/all/themes/psl/page.tpl.php" />
+        <option value="$PROJECT_DIR$/sites/all/modules/custom/fn_setup/fn_setup.module" />
+        <option value="$PROJECT_DIR$/sites/all/modules/custom/fn_setup/fn_setup.info" />
       </list>
     </option>
   </component>
@@ -440,12 +304,26 @@
               <option name="myItemId" value="all" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+          </PATH>
+          <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="themes" />
+              <option name="myItemId" value="pslnewsletter" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="fish-for-news" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="zen" />
+              <option name="myItemId" value="sites" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="all" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="modules" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -467,11 +345,11 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="themes" />
+              <option name="myItemId" value="modules" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="psl" />
+              <option name="myItemId" value="custom" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -490,6 +368,14 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="all" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="modules" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="contrib" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -536,11 +422,15 @@
     <property name="options.lastSelected" value="vcs.Git" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../../apache/conf/httpd.conf" />
     <property name="FullScreen" value="false" />
-    <property name="options.searchVisible" value="true" />
+    <property name="GoToClass.includeJavaFiles" value="false" />
     <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="options.searchVisible" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\xampp\htdocs\fish-for-news\sites\all\modules\contrib" />
+      <recent name="E:\xampp\htdocs\fish-for-news\sites\all\themes\psl\images\happening" />
+      <recent name="E:\xampp\htdocs\fish-for-news\sites\all\themes\psl\css" />
       <recent name="E:\xampp\htdocs\fish-for-news\sites\all\themes\psl" />
     </key>
   </component>
@@ -601,10 +491,9 @@
     <layout>
       <window_info id="Changes" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.33519554" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3282123" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32960895" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.33500716" sideWeight="0.66480446" order="1" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.27044475" sideWeight="0.66480446" order="1" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32843137" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
@@ -614,6 +503,7 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32843137" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32960895" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="combo" />
@@ -681,114 +571,119 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/profiles/fish4news/fish4news.install">
+    <entry file="file://$PROJECT_DIR$/sites/all/themes/psl/css/blue.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="45" column="78" selection-start="1166" selection-end="1212" vertical-scroll-proportion="0.0">
+        <state line="32" column="16" selection-start="582" selection-end="665" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/profiles/fish4news/fish4news.info">
+    <entry file="file://$PROJECT_DIR$/sites/all/themes/psl/css/pink.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="25" selection-start="420" selection-end="420" vertical-scroll-proportion="0.0">
+        <state line="30" column="40" selection-start="627" selection-end="627" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/sites/all/modules/custom/fn_setup/fn_setup.module">
+    <entry file="file://$PROJECT_DIR$/sites/all/themes/psl/css/green.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+        <state line="30" column="46" selection-start="624" selection-end="624" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/sites/all/modules/custom/fn_content_type/fn_content_type.features.inc">
+    <entry file="file://$PROJECT_DIR$/sites/all/themes/psl/css/orange.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+        <state line="59" column="43" selection-start="1142" selection-end="1142" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/sites/all/modules/custom/fn_content_type/fn_content_type.features.field_instance.inc">
+    <entry file="file://$PROJECT_DIR$/sites/all/themes/psl/css/red.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="239" column="33" selection-start="6005" selection-end="6005" vertical-scroll-proportion="-0.6923077">
+        <state line="28" column="9" selection-start="562" selection-end="562" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/sites/all/modules/custom/fn_content_type/fn_content_type.features.field_base.inc">
+    <entry file="file://$PROJECT_DIR$/sites/all/modules/contrib/views/includes/view.inc">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/sites/all/modules/custom/fn_content_type/fn_content_type.module">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/sites/all/modules/custom/fn_content_type/fn_content_type.info">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/sites/all/modules/custom/fn_setup/fn_setup.info">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="61" column="27" selection-start="1736" selection-end="1736" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/sites/all/themes/psl/template.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="104" column="27" selection-start="3323" selection-end="3323" vertical-scroll-proportion="-58.192307">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/sites/all/themes/psl/templates/html.tpl.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="9" selection-start="742" selection-end="742" vertical-scroll-proportion="0.33090025">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/sites/all/themes/psl/templates/block--no-wrapper.tpl.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/sites/all/themes/psl/theme-settings.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="26" column="21" selection-start="854" selection-end="854" vertical-scroll-proportion="0.4787736">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/sites/all/themes/psl/templates/comment.tpl.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.8419811">
+        <state line="1334" column="11" selection-start="38853" selection-end="38853" vertical-scroll-proportion="0.35436893">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/sites/all/themes/psl/psl.info">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="10" selection-start="333" selection-end="333" vertical-scroll-proportion="0.0">
+        <state line="14" column="13" selection-start="374" selection-end="374" vertical-scroll-proportion="0.0">
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/includes/theme.inc">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="636" column="24" selection-start="21996" selection-end="21996" vertical-scroll-proportion="-7.230769">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/includes/common.inc">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="5833" column="9" selection-start="223625" selection-end="223625" vertical-scroll-proportion="0.35436893">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/node/node.module">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="1328" column="9" selection-start="42540" selection-end="42540" vertical-scroll-proportion="0.35436893">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sites/all/themes/psl/template.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="148" column="20" selection-start="4745" selection-end="4758" vertical-scroll-proportion="-13.076923">
+          <folding>
+            <element signature="e#6#199#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/sites/all/themes/psl/page.tpl.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="61" selection-start="53" selection-end="61" vertical-scroll-proportion="0.0">
+        <state line="14" column="15" selection-start="373" selection-end="373" vertical-scroll-proportion="-9.153846">
+          <folding>
+            <marker date="1402144771338" expanded="true" signature="400:480" placeholder="..." />
+            <marker date="1402144771338" expanded="true" signature="543:588" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sites/all/modules/custom/fn_setup/fn_setup.module">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="54" column="65" selection-start="1626" selection-end="1626" vertical-scroll-proportion="-4.576923">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/profiles/fish4news/fish4news.info">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="16" column="25" selection-start="412" selection-end="420" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sites/all/modules/custom/fn_setup/fn_setup.info">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="19" column="22" selection-start="543" selection-end="543" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sites/all/modules/contrib/comment_easy_reply/comment_easy_reply.admin.inc">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
